@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- SEGUIR O ESCOPO!!!!!!!!!-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Super Preço - Refrigerante sem Açúcar Coca-Cola Garrafa 1,5L</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Navegação-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logo_sem_fundo.png" alt="Start Bootstrap" style="width: 9.7rem; height: auto;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Sobre</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">All Products</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                            <li><a onclick="zerarContador();" class="dropdown-item" href="#!">Zerar contador</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <!-- Técnica para disfarçar um link como um botão usando CSS (class="btn btn-outline-dark")-->
+                    <a href="minha_lista.html" class="btn btn-outline-dark" type="submit"> <i
+                            class="bi-cart-fill me-1"></i>Minha lista <span
+                            class="badge bg-dark text-white ms-1 rounded-pill">0</span></a>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- Lista mercados disponíveis-->
+    <h1>Seguir escopo!</h1>
+    <section id="lista-de-ofertas" class="py-5 bg-light">
+        <div class="container px-4 px-lg-5 mt-5">
+            <!-- "row = linha horizontal" // "cols-1 = colunas de largura total " // "g-4 = espaçamento entre as colunas"-->
+            <div class="row row-cols-1 row-cols-md-5 g-4">
+                <!-- Produto 1-->
+                <!-- Coluna-->
+                <div class="col mb-3">
+                    <div class="card" data-id="1"
+                        data-name="Antitranspirante Aerossol sem Perfume Rexona Clinical 150ml" data-price="15">
+                        <div class="product-image">
+                            <img src="img/antitranspirante-aerossol-sem-perfume-rexona-clinical-150ml_8333.jpg"
+                                class="card-img-top" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <div class="product-title">
+                                <h5 class="card-title">Antitranspirante Aerossol sem Perfume Rexona Clinical 150ml</h5>
+                            </div>
+                            <div class="product-description">
+                                <p class="card-text"></p>
+                            </div>
+                            <div class="product-action">
+                                <a onclick="adicionarItem(this)" class="btn btn-outline-dark">Comparar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produto 2-->
+                <div class="col mb-3">
+                    <div class="card" data-id="1"
+                        data-name="Antitranspirante Aerossol sem Perfume Rexona Clinical 150ml" data-price="15">
+                        <div class="product-image">
+                            <img src="img/bala-de-gelatina-morango-e-nata-beijos-fini-pacote-100g_6065.jpg"
+                                class="card-img-top" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <div class="product-title">
+                                <h5 class="card-title">Bala de Gelatinas Morango e Nata Beijos Fini Pacote 90g</h5>
+                            </div>
+                            <div class="product-description">
+                                <p class="card-text"></p>
+                            </div>
+                            <div class="product-action">
+                                <a onclick="adicionarItem(this)" class="btn btn-outline-dark">Comparar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produto 3-->
+                <div class="col mb-3">
+                    <div class="card" data-id="1"
+                        data-name="Antitranspirante Aerossol sem Perfume Rexona Clinical 150ml" data-price="15">
+                        <div class="product-image">
+                            <img src="img/refrigerante-sem-acucar-coca-cola-garrafa-1-5l.jpg" class="card-img-top"
+                                alt="...">
+                        </div>
+                        <div class="card-body">
+                            <div class="product-title">
+                                <h5 class="card-title">Refrigerante sem Açúcar Coca-Cola Garrafa 1,5L</h5>
+                            </div>
+                            <div class="product-description">
+                                <p class="card-text"></p>
+                            </div>
+                            <div class="product-action">
+                                <a onclick="adicionarItem(this)" class="btn btn-outline-dark">Comparar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produto 4-->
+
+                <div class="col mb-3">
+                    <div class="card" data-id="1"
+                        data-name="Antitranspirante Aerossol sem Perfume Rexona Clinical 150ml" data-price="15">
+                        <div class="product-image">
+                            <img src="img/vodka-destilada-absolut-garrafa-750ml_5261.jpg" class="card-img-top"
+                                alt="...">
+                        </div>
+                        <div class="card-body">
+                            <div class="product-title">
+                                <h5 class="card-title">Vodka Destilada Absolut Garrafa 750ml</h5>
+                            </div>
+                            <div class="product-description">
+                                <p class="card-text"></p>
+                            </div>
+                            <div class="product-action">
+                                <a onclick="adicionarItem(this)" class="btn btn-outline-dark">Comparar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            </div>
+        </div>
+    </section>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; eliel.dev</p>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- Informações dos produtos-->
+    <script src="js/produtos_api.js"></script>
+</body>
+
+</html>
