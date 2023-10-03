@@ -186,7 +186,11 @@ h4,
 
 h5,
 .h5 {
-  font-size: 1.05rem;
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 h6,
@@ -4789,6 +4793,8 @@ fieldset:disabled .btn {
   background-clip: border-box;
   border: var(--bs-card-border-width) solid var(--bs-card-border-color);
   border-radius: var(--bs-card-border-radius);
+  justify-content: center;
+  align-items: center;
 }
 
 .card>hr {
@@ -4901,7 +4907,7 @@ fieldset:disabled .btn {
 .card-img-top {
   border-top-left-radius: var(--bs-card-inner-border-radius);
   border-top-right-radius: var(--bs-card-inner-border-radius);
-  margin-left: 2rem;
+  margin-top: 1.3rem;
 }
 
 .card-img,
@@ -8606,7 +8612,7 @@ fieldset:disabled .btn {
 }
 
 .mt-5 {
-  margin-top: 3rem !important;
+  margin-top: 0rem !important;
 }
 
 .mt-auto {
