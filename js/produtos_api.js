@@ -16,7 +16,7 @@ function carregarProdutos() {
                                 <div class="product-description">
                                 </div>
                                 <div class="product-action">
-                                    <a onclick="" class="btn btn-outline-dark" href="detalhes.html?id=${produto.id}&${produto.name}">Comparar</a>
+                                    <a onclick="" class="btn btn-outline-dark" href="detalhes.html?id=${produto.id}&name=${produto.name}"">Comparar</a>
                                 </div>
                             </div>
                         </div>
