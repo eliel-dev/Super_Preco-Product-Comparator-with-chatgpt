@@ -13,13 +13,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+
+    <script>
+        function getParam(name) {
+            // Obtém a parte da URL após o ?
+            var queryString = window.location.search;
+            // Cria um objeto URLSearchParams com os parâmetros
+            var urlParams = new URLSearchParams(queryString);
+            // Retorna o valor do parâmetro solicitado ou null se não existir
+            return urlParams.get(name);
+        }
+    </script>
 </head>
 
 <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#!">
+            <a class="navbar-brand" href="index.html">
                 <img src="assets/img/logo_sem_fundo.png" alt="Start Bootstrap" style="width: 9.7rem; height: auto;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -57,10 +68,10 @@
     <section id="" class="py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-4"><img class="card-img-top mb-5 mb-md-0"
+                <div class="col-md-4"><img class="card-img-top mb-5 mb-md-0" id="imagem"
                         src="img/refrigerante-sem-acucar-coca-cola-garrafa-1-5l.jpg" alt="..." /></div>
                 <div class="col-md-6">
-                    <h2 class="display-5 fw-bolder">Refrigerante sem Açúcar Coca-Cola Garrafa 1,5L</h2>
+                    <h2 id="nome" class="display-5 fw-bolder"></h2>
                     <div class="fs-5 mb-5">
                     </div>
                     <p class="lead"></p>
@@ -86,7 +97,7 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">Cooper</h5>
                                     <!-- Product price-->
-                                    R$ 6,79
+                                    <div id="preco1"></div>
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -108,7 +119,7 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">Superkoch</h5>
                                     <!-- Product price-->
-                                    R$6,49
+                                    <div id="preco2"></div>
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -130,7 +141,7 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">Schutze</h5>
                                     <!-- Product price-->
-                                    R$ 7,45
+                                    <div id="preco3">R$ 6,79</div>
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -151,9 +162,34 @@
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Super Preço 2023</p>
         </div>
     </footer>
+    <script>
+        // Obtém os valores dos parâmetros id e nome na URL
+        let id = getParam("id");
+        let nome = getParam("nome");
+        // Chama a API para buscar mais dados do produto usando o id
+        // Aqui você pode usar o método que preferir, como fetch, axios, etc.
+        // Vou usar um exemplo simples com fetch e JSON
+        fetch("https://650a2b30f6553137159c79ee.mockapi.io/produtos/" + id)
+            .then(response => response.json())
+            .then(data => {
+                // Aqui você pode usar os dados retornados pela API para mostrar na tela
+                let preco1Element = document.getElementById("preco1");
+                let preco2Element = document.getElementById("preco2");
+                let preco3Element = document.getElementById("preco3");
+                let descricaoElement = document.getElementById("nome");
+
+                preco1Element.textContent = data.preco1;
+                preco2Element.textContent = data.preco2;
+                preco3Element.textContent = data.preco3;
+                descricaoElement.textContent = data.name;
+            })
+            .catch(error => {
+                alert("Ocorreu um erro ao buscar os dados do produto: " + error);
+            });
+    </script>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

@@ -14,10 +14,9 @@ function carregarProdutos() {
                                     <h5 class="card-title">${produto.name}</h5>
                                 </div>
                                 <div class="product-description">
-                                    <p class="card-text"></p>
                                 </div>
                                 <div class="product-action">
-                                    <a onclick="adicionarItem(${produto});" class="btn btn-outline-dark">Comparar</a>
+                                    <a onclick="" class="btn btn-outline-dark" href="detalhes.html?id=${produto.id}&${produto.name}">Comparar</a>
                                 </div>
                             </div>
                         </div>
