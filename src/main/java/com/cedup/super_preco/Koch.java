@@ -1,4 +1,4 @@
-package org.super_preco;
+package com.cedup.super_preco;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

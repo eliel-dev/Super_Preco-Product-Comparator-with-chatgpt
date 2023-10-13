@@ -1,4 +1,4 @@
-package org.super_preco;
+package com.cedup.super_preco;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -44,15 +44,22 @@ public class Cooper {
                     Document doc = connection.get();
 
                     // Selecione os elementos com a classe .product-variation__details, que é a div pai dos elementos product-variation__...
-                    Elements products = doc.select(".product-variation__details");
+                    Elements products = doc.select(".product-variation");
 
                     // Iterando sobre cada produto = para cada elemento achado com a classe 'product-variation__details' faça isso:
                     for (Element product : products) {
                         // atribui para elementoNomeProduto o primeiro elemento achado com a classe "product-variation__name"
                         Element productNameElement = product.selectFirst(".product-variation__name");
+                        //
                         String productName = productNameElement.text();
                         String productHref = "https://www.minhacooper.com.br" + productNameElement.attr("href");
-                        String productFinalPrice = product.selectFirst(".product-variation__final-price").text();
+                        // Alguns produtos podem ter um desconto = html com preço é diferente
+                        Element productFinalPriceElement = product.selectFirst(".product-variation__final-price");
+                        if (productFinalPriceElement == null) {
+                            // Se o produto tem um preço com desconto, selecione o elemento com a classe '.preco-desconto'
+                            productFinalPriceElement = product.selectFirst(".preco-desconto");
+                        }
+                        String productFinalPrice = productFinalPriceElement.text();
                         String productImageLink =  "https:" + product.parent().selectFirst(".product-variation__image-container img").attr("src");
 
                         System.out.println("Nome do produto: " + productName);
