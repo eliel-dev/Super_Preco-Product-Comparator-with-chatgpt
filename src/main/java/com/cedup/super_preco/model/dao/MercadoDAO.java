@@ -18,10 +18,10 @@ public class MercadoDAO {
 
         String sql = "SELECT * FROM mercado";
         try(PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql);
-            ResultSet resultado = stmt.executeQuery()) {
-            while (resultado.next()) {
-                int id = resultado.getInt("id_mercado");
-                String nome = resultado.getString("nome");
+            ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int id = rs.getInt("id_mercado");
+                String nome = rs.getString("nome");
                 mercados.add(new MercadoDTO(id, nome));
             }
             return mercados;

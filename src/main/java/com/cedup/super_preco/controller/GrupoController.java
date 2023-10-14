@@ -17,7 +17,7 @@ public class GrupoController {
 
     List<GrupoDTO> grupoDTOS = new ArrayList<>();
     @GetMapping
-    public List<GrupoDTO> getMercados() throws SQLException {
+    public List<GrupoDTO> getGrupos() throws SQLException {
 
         grupoDTOS = grupoDAO.getGrupos();
 
