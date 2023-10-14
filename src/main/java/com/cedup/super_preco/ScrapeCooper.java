@@ -9,7 +9,7 @@ import org.jsoup.select.Elements;
 import java.util.Arrays;
 import java.util.List;
 
-public class Cooper {
+public class ScrapeCooper {
     public static void main(String[] args) {
         try {
             // para contar o total de produtos que vão ser raspados
@@ -60,7 +60,16 @@ public class Cooper {
                             productFinalPriceElement = product.selectFirst(".preco-desconto");
                         }
                         String productFinalPrice = productFinalPriceElement.text();
+                        // Remover todos os caracteres não numéricos
+                        productFinalPrice = productFinalPrice.replaceAll("[^\\d.,]", "");
+                        // Substituir vírgulas por pontos
+                        productFinalPrice = productFinalPrice.replace(',', '.');
+                        // Converter para double
+
+                        double priceDouble = Double.parseDouble(productFinalPrice);
                         String productImageLink =  "https:" + product.parent().selectFirst(".product-variation__image-container img").attr("src");
+
+
 
                         System.out.println("Nome do produto: " + productName);
                         System.out.println("Href do produto: " + productHref);

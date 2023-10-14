@@ -8,7 +8,7 @@ import org.jsoup.select.Elements;
 import java.util.Arrays;
 import java.util.List;
 
-public class Koch {
+public class ScrapeKoch {
     public static void main(String[] args) {
         try {
             // para contar o total de produtos que vão ser raspados
@@ -67,6 +67,13 @@ public class Koch {
                             // Se não, pegue o texto do primeiro
                             productPrice = productPrices.first().text();
                         }
+
+                        // Remover todos os caracteres não numéricos
+                        productPrice = productPrice.replaceAll("[^\\d.,]", "");
+                        // Substituir vírgulas por pontos
+                        productPrice = productPrice.replace(',', '.');
+                        // Converter para double
+                        double priceDouble = Double.parseDouble(productPrice);
 
                         System.out.println("Nome do produto: " + productName);
                         System.out.println("Href do produto: " + productHref);
