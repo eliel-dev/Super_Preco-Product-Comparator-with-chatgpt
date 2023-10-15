@@ -1,7 +1,6 @@
 package com.cedup.super_preco.model;
 
 
-
 public class GrupoDTO {
     public int id;
     public String nome;

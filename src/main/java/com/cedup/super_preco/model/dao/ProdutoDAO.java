@@ -76,6 +76,12 @@ public class ProdutoDAO {
         return produto;
     }
 
+    public void postProdutos(List<ProdutoDTO> produtos) throws SQLException {
+        for (ProdutoDTO produto : produtos) {
+            postProduto(produto);
+        }
+    }
+
     public void deleteProduto(int id) throws SQLException{
         String sql = "DELETE FROM produto WHERE id_produto = ?";
 

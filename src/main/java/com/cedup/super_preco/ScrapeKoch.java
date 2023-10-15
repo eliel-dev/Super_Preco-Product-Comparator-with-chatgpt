@@ -1,15 +1,21 @@
 package com.cedup.super_preco;
 
+import com.cedup.super_preco.model.ProdutoDTO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Service
 public class ScrapeKoch {
-    public static void main(String[] args) {
+
+    public List<ProdutoDTO> scrapeProducts() {
+        List<ProdutoDTO> produtos = new ArrayList<>();
         try {
             // para contar o total de produtos que vão ser raspados
             int totalProductCount = 0;
@@ -46,10 +52,10 @@ public class ScrapeKoch {
                             .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36")
                             .get();
 
-                    // Selecione os elementos com a classe .product-item-info, que é a div pai dos elementos product-item-...
+                    // Seleciona os elementos com a classe .product-item-info, que é a div pai dos elementos product-item-...
                     Elements products = doc.select(".product-item-info");
 
-                    // Itere sobre cada produto
+                    // Itera sobre cada produto
                     for (Element product : products) {
                         Element productNameElement = product.selectFirst(".product-item-link");
                         String productName = productNameElement.text();
@@ -75,6 +81,11 @@ public class ScrapeKoch {
                         // Converter para double
                         double priceDouble = Double.parseDouble(productPrice);
 
+                        // cria nova instância de ProdutoDTO
+                        ProdutoDTO productInfo = new ProdutoDTO(0, 2, 1, productName, priceDouble, productHref, null);
+                        // adiciona o produto à lista 'produto"
+                        produtos.add(productInfo);
+
                         System.out.println("Nome do produto: " + productName);
                         System.out.println("Href do produto: " + productHref);
                         System.out.println("Preço final do produto: " + productPrice);
@@ -97,5 +108,6 @@ public class ScrapeKoch {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        return produtos;
     }
 }

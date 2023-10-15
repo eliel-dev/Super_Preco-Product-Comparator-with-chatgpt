@@ -1,8 +1,9 @@
 package com.cedup.super_preco.controller;
 
-import com.cedup.super_preco.model.MercadoDTO;
+import com.cedup.super_preco.ChatGPT;
+import com.cedup.super_preco.ScrapeCooper;
+import com.cedup.super_preco.ScrapeKoch;
 import com.cedup.super_preco.model.ProdutoDTO;
-import com.cedup.super_preco.model.dao.MercadoDAO;
 import com.cedup.super_preco.model.dao.ProdutoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +17,44 @@ import java.util.List;
 public class ProdutoController {
     @Autowired
     ProdutoDAO produtoDAO;
+    @Autowired
+    ScrapeCooper scrapeCooper;
+    @Autowired
+    ScrapeKoch scrapeKoch;
+    @Autowired
+    ChatGPT chatGPT;
+
+    @GetMapping ("/scrape")
+    public List<ProdutoDTO> getScraping() throws SQLException {
+        // Chama o método de web scraping em cada serviço e obtenha as listas de produtos
+        List<ProdutoDTO> produtosCooper = scrapeCooper.scrapeProducts();
+        List<ProdutoDTO> produtosKoch = scrapeKoch.scrapeProducts();
+
+        // Combina as duas listas em uma
+        List<ProdutoDTO> allProdutos = new ArrayList<>();
+        allProdutos.addAll(produtosCooper);
+        allProdutos.addAll(produtosKoch);
+
+        // Passa a lista combinada de produtos para o método postProdutos() do seu DAO
+        produtoDAO.postProdutos(allProdutos);
+
+        return allProdutos;
+    }
+
+    @GetMapping("/testOpenAI")
+    public String testOpenAI() {
+        // Gera o prompt para a API da OpenAI
+        String prompt = "Qual a cor do céu?";
+
+        // Obter a resposta da API da OpenAI
+        String response = chatGPT.getOpenAIResponse(prompt);
+
+        return response;
+    }
 
     List<ProdutoDTO> produtoDTOS = new ArrayList<>();
     @GetMapping
-    public List<ProdutoDTO> getMercados() throws SQLException {
+    public List<ProdutoDTO> getProdutos() throws SQLException {
 
         produtoDTOS = produtoDAO.getProdutos();
 
