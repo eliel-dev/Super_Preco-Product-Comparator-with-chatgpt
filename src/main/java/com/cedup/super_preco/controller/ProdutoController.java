@@ -43,8 +43,13 @@ public class ProdutoController {
 
     @GetMapping("/testOpenAI")
     public String testOpenAI() {
-        // Gera o prompt para a API da OpenAI
-        String prompt = "Qual a cor do céu?";
+        // limite de token = https://platform.openai.com/docs/models/gpt-3-5
+
+        ProdutoDTO produto1 = new ProdutoDTO(1, 1, "refrigerante sem acucar coca-cola garrafa 1,5l");
+        ProdutoDTO produto2 = new ProdutoDTO(6, 2,  "refrigerante coca cola zero pet 1.5l");
+
+        // Crie o prompt para a API da OpenAI
+        String prompt =  produto1.nome + produto2.nome;
 
         // Obter a resposta da API da OpenAI
         String response = chatGPT.getOpenAIResponse(prompt);

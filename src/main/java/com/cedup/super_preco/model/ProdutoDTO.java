@@ -20,6 +20,12 @@ public class ProdutoDTO {
         this.link_img = link_img;
     }
 
+    public ProdutoDTO(int id_produto, int id_mercado, String nome) {
+        this.id_produto = id_produto;
+        this.id_mercado = id_mercado;
+        this.nome = nome;
+    }
+
     public int getId_produto() {
         return id_produto;
     }
