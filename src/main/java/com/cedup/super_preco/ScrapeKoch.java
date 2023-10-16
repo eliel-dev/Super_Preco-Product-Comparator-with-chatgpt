@@ -74,6 +74,7 @@ public class ScrapeKoch {
                             productPrice = productPrices.first().text();
                         }
 
+                        // formatar o texto do preço para apenas o número
                         // Remover todos os caracteres não numéricos
                         productPrice = productPrice.replaceAll("[^\\d.,]", "");
                         // Substituir vírgulas por pontos
@@ -81,14 +82,18 @@ public class ScrapeKoch {
                         // Converter para double
                         double priceDouble = Double.parseDouble(productPrice);
 
+                        // imagem em baixa resolução/otimizada
+                        String productImageLink = product.parent().selectFirst(".product-image-photo").attr("src");
+
                         // cria nova instância de ProdutoDTO
-                        ProdutoDTO productInfo = new ProdutoDTO(0, 2, 1, productName, priceDouble, productHref, null);
+                        ProdutoDTO productInfo = new ProdutoDTO(0, 2, 1, productName, priceDouble, productHref, productImageLink);
                         // adiciona o produto à lista 'produto"
                         produtos.add(productInfo);
 
                         System.out.println("Nome do produto: " + productName);
                         System.out.println("Href do produto: " + productHref);
                         System.out.println("Preço final do produto: " + productPrice);
+                        System.out.println("Link da imagem do produto: " + productImageLink);
                         System.out.println("---------------------------------------------------------------------------------------------------------------------");
                         productCount++;
                         totalProductCount++;

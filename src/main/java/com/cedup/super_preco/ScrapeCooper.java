@@ -65,6 +65,8 @@ public class ScrapeCooper {
                             // Se o produto tem um preço com desconto, selecione o elemento com a classe '.preco-desconto'
                             productFinalPriceElement = product.selectFirst(".preco-desconto");
                         }
+
+                        // formatar o texto do preço para apenas o número
                         String productFinalPrice = productFinalPriceElement.text();
                         // Remover todos os caracteres não numéricos
                         productFinalPrice = productFinalPrice.replaceAll("[^\\d.,]", "");

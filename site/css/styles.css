@@ -1262,6 +1262,10 @@ progress {
     width: 50%;
   }
 
+  h2#nome_produto {
+    padding-bottom: 3.2rem;
+}
+
   .col-md-7 {
     flex: 0 0 auto;
     width: 58.33333333%;
@@ -3208,6 +3212,10 @@ textarea.form-control.is-invalid {
 .was-validated .input-group>.form-floating:not(:focus-within):invalid,
 .input-group>.form-floating:not(:focus-within).is-invalid {
   z-index: 4;
+}
+
+a.btn.btn-outline-dark.flex-shrink-0 {
+  font-size: 1.5rem;
 }
 
 .btn {

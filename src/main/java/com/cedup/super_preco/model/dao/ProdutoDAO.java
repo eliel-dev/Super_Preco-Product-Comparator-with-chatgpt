@@ -55,6 +55,28 @@ public class ProdutoDAO {
         }
     }
 
+    public List<ProdutoDTO> getProdutosPorGrupo(int id_grupo) throws SQLException {
+        List<ProdutoDTO> produtos = new ArrayList<>();
+
+        String sql = "SELECT * FROM produto WHERE id_grupo = ?";
+        try(PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
+            stmt.setInt(1, id_grupo);
+            try(ResultSet resultado = stmt.executeQuery()) {
+                while (resultado.next()) {
+                    int id_produto = resultado.getInt("id_produto");
+                    int id_mercado = resultado.getInt("id_mercado");
+                    String nome = resultado.getString("nome");
+                    double preco = resultado.getDouble("preco");
+                    String link = resultado.getString("link");
+                    String link_img = resultado.getString("link_img");
+                    produtos.add(new ProdutoDTO(id_produto, id_mercado, id_grupo, nome, preco, link, link_img));
+                }
+            }
+        }
+        return produtos;
+    }
+
+
     public ProdutoDTO postProduto(ProdutoDTO produto) throws SQLException {
         String sql = "INSERT INTO produto (id_mercado, id_grupo, nome, preco, link, link_img) VALUES (?, ?, ?, ?, ?, ?)";
 

@@ -66,6 +66,12 @@ public class ProdutoController {
         return produtoDTOS;
     }
 
+    @GetMapping("/grupo/{id_grupo}")
+    public List<ProdutoDTO> getProdutosPorGrupo(@PathVariable int id_grupo) throws SQLException {
+        List<ProdutoDTO> grupo2 = produtoDAO.getProdutosPorGrupo(id_grupo);
+        return grupo2;
+    }
+
     @GetMapping("/{id}")
     public ProdutoDTO getProdutp(@PathVariable("id") int id) throws SQLException {
 
