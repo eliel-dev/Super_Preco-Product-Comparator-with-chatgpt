@@ -59,6 +59,7 @@
                     <div class="fs-5 mb-5">
                     </div>
                     <p class="lead"></p>
+                    <h2 id="nome_produto"></h2>
                     <div class="d-flex">
                         <a href="#lista-de-ofertas" class="btn btn-outline-dark flex-shrink-0">Comparar preços em 3
                             mercados</a>
@@ -72,42 +73,6 @@
         <h2 class="container px-4 px-lg-5 mt-5">Compare preços nos seguintes mercados:</h2>
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row">
-                <div class="col-sm-4 mb-3">
-                    <div class="card">
-                        <div class="card-body d-flex align-items-center">
-                            <img src="img/cooper-logo.jpg" class="card-img-top-detalhes" alt="">
-                            <div>
-                                <h5 class="card-title2">Cooper</h5>
-                                <p class="card-text" id="preco1"></p>
-                                <a id="mercado1" target="_blank" class="btn btn-primary">Ir até o mercado</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-3">
-                    <div class="card">
-                        <div class="card-body d-flex align-items-center">
-                            <img src="img/411c3878-sistema.webp" class="card-img-top-detalhes" alt="">
-                            <div>
-                                <h5 class="card-title2">Schutze</h5>
-                                <p class="card-text" id="preco2"></p>
-                                <a id="mercado2" target="_blank" class="btn btn-primary">Ir até o mercado</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-3">
-                    <div class="card">
-                        <div class="card-body d-flex align-items-center">
-                            <img src="img/koch2.webp" class="card-img-top-detalhes" alt="">
-                            <div>
-                                <h5 class="card-title2">SuperKoch</h5>
-                                <p class="card-text" id="preco3"></p>
-                                <a id="mercado3" target="_blank" class="btn btn-primary">Ir até o mercado</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             </div>
@@ -120,51 +85,17 @@
         </div>
     </footer>
     <script>
-        function getParam(name) {
-            // Obtém a parte da URL após o ?
+        // Ao clicar no botão comparar na pagina inicial, passo por parâmetro (id_produto, id_mercado, nome e id_grupo)
+        // grupo = nome para o parâmetro na função (pode ser qualquer nome)
+        function getParam(grupo) {
+            // basicamente vai buscar oque vem depois do '?' e armazenar em 'queryString'
             var queryString = window.location.search;
-            // Cria um objeto URLSearchParams com os parâmetros
+            // uma nova instância de URLSearchParams vai me permitir trabalhar com os parâmetros obtidos no javascript
             var urlParams = new URLSearchParams(queryString);
-            // Retorna o valor do parâmetro solicitado ou null se não existir
-            return urlParams.get(name);
-        }
-        // Obtém os valores dos parâmetros id e nome na URL
-        let id = getParam("id");
-        let name = getParam("name");
-
-        if (id && name) {
-            // Chama a API para buscar mais dados do produto usando o id
-            fetch("https://650a2b30f6553137159c79ee.mockapi.io/produtos/" + id)
-                .then(response => response.json())
-                .then(data => {
-                    // Aqui você pode usar os dados retornados pela API para mostrar na tela
-                    let linkMercado1Element = document.getElementById("mercado1");
-                    let linkMercado2Element = document.getElementById("mercado2");
-                    let linkMercado3Element = document.getElementById("mercado3");
-                    let preco1Element = document.getElementById("preco1");
-                    let preco2Element = document.getElementById("preco2");
-                    let preco3Element = document.getElementById("preco3");
-                    let descricaoElement = document.getElementById("nome");
-                    let imagemElement = document.getElementById("imagem");
-
-                    linkMercado1Element.href = data.link1;
-                    linkMercado2Element.href = data.link2;
-                    linkMercado3Element.href = data.link3;
-                    preco1Element.textContent = parseFloat(data.preco1).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-                    preco2Element.textContent = parseFloat(data.preco2).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-                    preco3Element.textContent = parseFloat(data.preco3).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-                    descricaoElement.textContent = data.name;
-                    imagemElement.src = data.img;
-                })
-                .catch(error => {
-                    alert("Ocorreu um erro ao buscar os dados do produto: " + error);
-                });
-        } else {
-            // Redireciona para a página de erro
-            window.location.href = "/erro.html";
+            // retorna oque foi obtido na url
+            return urlParams.get(grupo);
         }
     </script>
-
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

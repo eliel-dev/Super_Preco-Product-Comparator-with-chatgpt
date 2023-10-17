@@ -1,16 +1,22 @@
 package com.cedup.super_preco;
 
+import com.cedup.super_preco.model.ProdutoDTO;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Cooper {
-    public static void main(String[] args) {
+@Service
+public class ScrapeCooper {
+
+    public List<ProdutoDTO> scrapeProducts () {
+        List<ProdutoDTO> produtos = new ArrayList<>();
         try {
             // para contar o total de produtos que vão ser raspados
             int totalProductCount = 0;
@@ -59,8 +65,21 @@ public class Cooper {
                             // Se o produto tem um preço com desconto, selecione o elemento com a classe '.preco-desconto'
                             productFinalPriceElement = product.selectFirst(".preco-desconto");
                         }
+
+                        // formatar o texto do preço para apenas o número
                         String productFinalPrice = productFinalPriceElement.text();
+                        // Remover todos os caracteres não numéricos
+                        productFinalPrice = productFinalPrice.replaceAll("[^\\d.,]", "");
+                        // Substituir vírgulas por pontos
+                        productFinalPrice = productFinalPrice.replace(',', '.');
+                        // Converter para double
+                        double priceDouble = Double.parseDouble(productFinalPrice);
                         String productImageLink =  "https:" + product.parent().selectFirst(".product-variation__image-container img").attr("src");
+
+                        // cria uma nova instância de ProdutoDTO
+                        ProdutoDTO productInfo = new ProdutoDTO(0, 1, 1, productName, priceDouble, productHref, productImageLink);
+                        // adiciona o produto à lista
+                        produtos.add(productInfo);
 
                         System.out.println("Nome do produto: " + productName);
                         System.out.println("Href do produto: " + productHref);
@@ -88,5 +107,6 @@ public class Cooper {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        return produtos;
     }
 }
