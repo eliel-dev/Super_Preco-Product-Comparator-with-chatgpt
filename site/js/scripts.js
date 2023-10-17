@@ -14,9 +14,6 @@ let id_grupo = getParam("id_grupo");
                     let row = document.querySelector('#lista-de-ofertas .row');
                     // para cada produto 
                     data.forEach(produto => {
-                        // cria um div e defini uma classe para el
-                        let col = document.createElement('div');
-                        col.className = "col-sm-4 mb-3";
                         // como vou usar a mesma variável para os 2 mercados, declaro ela antes
                         let mercadoLogo, mercadoNome;
                         if (produto.id_mercado === 1) {
@@ -37,7 +34,11 @@ let id_grupo = getParam("id_grupo");
                                 document.getElementById('nome_produto').innerText = produto.nome;
                             }
                         }
-                        col.innerHTML = `
+                        // cria um div e defini uma classe para el
+                        let col = document.createElement('div');
+                        col.className = "col-sm-4 mb-3";
+
+                        col.htmlContent = `
                             <div class="card">
                                 <div class="card-body d-flex align-items-center">
                                     <img src="${mercadoLogo}" class="card-img-top-detalhes" alt="">
