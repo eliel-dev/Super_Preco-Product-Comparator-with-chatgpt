@@ -24,7 +24,7 @@ public class ScrapeCooper {
             // URL base do site
             String baseUrl = "https://www.minhacooper.com.br/loja/centro-timbo/produto/listar/";
             // Lista de IDs das categorias que foram tiradas da url do site
-            List<String> categoryIds = Arrays.asList("12", "644", "166", "199", "97", "7");
+            List<String> categoryIds = Arrays.asList("205");
 
             // Iterando sobre cada ID de categoria
             for (String categoryId : categoryIds) {

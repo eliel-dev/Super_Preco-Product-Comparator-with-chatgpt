@@ -13,7 +13,7 @@ import org.springframework.http.HttpHeaders;
 public class ChatGPT {
     // limite de token = https://platform.openai.com/docs/models/gpt-3-5
     private static final String HTTPS_API_OPENAI_COM_V_1_COMPLETIONS = "https://api.openai.com/v1/completions";
-    private static final String OPENAI_MODEL = "gpt-3.5-turbo-16k";
+    private static final String OPENAI_MODEL = "gpt-4";
 
     @Value("${openai-api-key}")
     private String apiKey;
@@ -25,7 +25,7 @@ public class ChatGPT {
         String requestJson = "{"
                 + "\"model\":\"" + OPENAI_MODEL + "\","
                 + "\"messages\":["
-                + "{\"role\":\"system\",\"content\":\"Para cada mercado listado, analise os produtos a seguir. Levando em consideração a marca, a seção, o sabor e a massa, atribua o mesmo id_grupo para um produto do Mercado 1 e seu correspondente no Mercado 2. Se não encontrar um produto correspondente em algum mercado, gere um id_grupo único para aquele produto. Por favor, faça isso para todos os produtos listados.\"},"
+                + "{\"role\":\"system\",\"content\":\": [{id_grupo: ,id_produto: [, ]}] \"},"
                 + "{\"role\":\"user\",\"content\":\"" + prompt + "\"}"
                 + "]"
                 + "}";
@@ -43,5 +43,4 @@ public class ChatGPT {
 
         return response.getBody();
     }
-
 }

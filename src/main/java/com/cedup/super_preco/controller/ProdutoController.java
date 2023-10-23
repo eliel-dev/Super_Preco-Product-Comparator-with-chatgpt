@@ -5,6 +5,8 @@ import com.cedup.super_preco.ScrapeCooper;
 import com.cedup.super_preco.ScrapeKoch;
 import com.cedup.super_preco.model.ProdutoDTO;
 import com.cedup.super_preco.model.dao.ProdutoDAO;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,26 +44,75 @@ public class ProdutoController {
     }
 
     @GetMapping("/testOpenAI")
-    public String testOpenAI() {
+    public String testOpenAI() throws SQLException {
         // limite de token = https://platform.openai.com/docs/models/gpt-3-5
 
-        ProdutoDTO produto1 = new ProdutoDTO(1, 1, "refrigerante sem acucar coca-cola garrafa 1,5l");
-        ProdutoDTO produto2 = new ProdutoDTO(6, 2,  "refrigerante coca cola zero pet 1.5l");
+        // Obter todos os produtos
+        List<ProdutoDTO> todosProdutos = produtoDAO.getByMercado();
+
+        // Dividir a lista de produtos em duas listas para cada mercado
+        List<ProdutoDTO> produtosCooper = todosProdutos.stream()
+                .filter(produto -> produto.id_mercado == 1)
+                .toList();
+        List<ProdutoDTO> produtosKoch = todosProdutos.stream()
+                .filter(produto -> produto.id_mercado == 2)
+                .toList();
 
         // Crie o prompt para a API da OpenAI
-        String prompt =  produto1.nome + produto2.nome;
+        StringBuilder prompt = new StringBuilder();
+        prompt.append("\\n\\nCooper:");
+        for (ProdutoDTO produto : produtosCooper) {
+            prompt.append("\\n").append("id_produto: ").append(produto.id_produto).append(", nome: ").append(produto.nome);
+        }
+
+        prompt.append("\\n\\nSuperkoch:");
+        for (ProdutoDTO produto : produtosKoch) {
+            prompt.append("\\n").append("id_produto: ").append(produto.id_produto).append(", nome: ").append(produto.nome);
+        }
+
+        // Remova a última vírgula e espaço
+        prompt.setLength(prompt.length() - 2);
 
         // Obter a resposta da API da OpenAI
-        String response = chatGPT.getOpenAIResponse(prompt);
+        String response = chatGPT.getOpenAIResponse(prompt.toString());
 
+        try {
+            // Criar um ObjectMapper
+            ObjectMapper mapper = new ObjectMapper();
+
+            // Converter a string JSON em um JsonNode
+            JsonNode rootNode = mapper.readTree(response);
+
+            // Obter o nó "choices"
+            JsonNode choicesNode = rootNode.path("choices");
+
+            // Se o nó "choices" é um array e tem pelo menos um elemento
+            if (choicesNode.isArray() && !choicesNode.isEmpty()) {
+                // Obter o primeiro elemento do array "choices"
+                JsonNode firstChoiceNode = choicesNode.get(0);
+
+                // Obter o nó "message"
+                JsonNode messageNode = firstChoiceNode.path("message");
+
+                // Obter o nó "content"
+                JsonNode contentNode = messageNode.path("content");
+
+                // Imprimir o conteúdo no console
+                System.out.println("Conteúdo da resposta: " + contentNode.asText());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return response;
     }
+
 
     List<ProdutoDTO> produtoDTOS = new ArrayList<>();
     @GetMapping
     public List<ProdutoDTO> getProdutos() throws SQLException {
 
-        produtoDTOS = produtoDAO.getProdutos();
+        produtoDTOS = produtoDAO.getAll();
 
         return produtoDTOS;
     }

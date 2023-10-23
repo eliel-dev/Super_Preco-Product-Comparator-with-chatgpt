@@ -24,12 +24,7 @@ public class ScrapeKoch {
             String baseUrl = "https://www.superkoch.com.br";
             // Lista de URLs usando o método 'asList'
             List<String> categoryPaths = Arrays.asList(
-                    "/mercearia/cereal-farinaceo/arroz",
-                    "/mercearia/azeite-oleo/azeite-oleo",
-                    "/mercearia/cereal-farinaceo/feijao",
-                    "/mercearia/massas",
-                    "/mercearia/confeitaria/acucar",
-                    "/mercearia/molhos-condimentos/sal"
+                    "/bebidas/refrigerante"
             );
 
             // Iterando sobre cada URL

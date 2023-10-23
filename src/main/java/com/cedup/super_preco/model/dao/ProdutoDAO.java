@@ -13,7 +13,7 @@ import java.util.List;
 
 @Repository
 public class ProdutoDAO {
-    public List<ProdutoDTO> getProdutos() throws SQLException {
+    public List<ProdutoDTO> getAll() throws SQLException {
         List<ProdutoDTO> produtos = new ArrayList<>();
 
         String sql = "SELECT * FROM produto";
@@ -32,6 +32,23 @@ public class ProdutoDAO {
             return produtos;
         }
     }
+
+    public List<ProdutoDTO> getByMercado() throws SQLException {
+        List<ProdutoDTO> produtos = new ArrayList<>();
+
+        String sql = "SELECT id_produto, id_mercado, nome FROM produto";
+        try(PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql);
+            ResultSet resultado = stmt.executeQuery()) {
+            while (resultado.next()) {
+                int id_produto = resultado.getInt("id_produto");
+                int id_mercado = resultado.getInt("id_mercado");
+                String nome = resultado.getString("nome");
+                produtos.add(new ProdutoDTO(id_produto, id_mercado, nome));
+            }
+            return produtos;
+        }
+    }
+
 
     public ProdutoDTO getProduto(int id) throws SQLException {
         ProdutoDTO produto = null;
@@ -129,4 +146,5 @@ public class ProdutoDAO {
         }
         return produto;
     }
+
 }
