@@ -18,9 +18,9 @@ public class ConnectionSingleton {
 
         if (connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection( //
-                    "jdbc:mysql://:3310/super_preco", //
+                    "jdbc:mysql://:3306/super_preco", //
                     "root", //
-                    "cedup");
+                    "");
         }
         return connection;
     }

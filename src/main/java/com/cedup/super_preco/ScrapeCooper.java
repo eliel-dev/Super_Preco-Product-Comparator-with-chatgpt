@@ -1,6 +1,6 @@
 package com.cedup.super_preco;
 
-import com.cedup.super_preco.model.ProdutoDTO;
+import com.cedup.super_preco.model.Produto_MercadoDTO;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,8 +15,8 @@ import java.util.List;
 @Service
 public class ScrapeCooper {
 
-    public List<ProdutoDTO> scrapeProducts () {
-        List<ProdutoDTO> produtos = new ArrayList<>();
+    public List<Produto_MercadoDTO> scrapeProducts () {
+        List<Produto_MercadoDTO> produtos = new ArrayList<>();
         try {
             // para contar o total de produtos que vão ser raspados
             int totalProductCount = 0;
@@ -24,7 +24,7 @@ public class ScrapeCooper {
             // URL base do site
             String baseUrl = "https://www.minhacooper.com.br/loja/centro-timbo/produto/listar/";
             // Lista de IDs das categorias que foram tiradas da url do site
-            List<String> categoryIds = Arrays.asList("205");
+            List<String> categoryIds = Arrays.asList("205", "40", "197");
 
             // Iterando sobre cada ID de categoria
             for (String categoryId : categoryIds) {
@@ -76,8 +76,8 @@ public class ScrapeCooper {
                         double priceDouble = Double.parseDouble(productFinalPrice);
                         String productImageLink =  "https:" + product.parent().selectFirst(".product-variation__image-container img").attr("src");
 
-                        // cria uma nova instância de ProdutoDTO
-                        ProdutoDTO productInfo = new ProdutoDTO(0, 1, 1, productName, priceDouble, productHref, productImageLink);
+                        // cria uma nova instância de Produto_MercadoDTO
+                        Produto_MercadoDTO productInfo = new Produto_MercadoDTO(0, 1, 1, productName, priceDouble, productHref, productImageLink);
                         // adiciona o produto à lista
                         produtos.add(productInfo);
 

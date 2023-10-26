@@ -1,8 +1,6 @@
 package com.cedup.super_preco.controller;
 
-import com.cedup.super_preco.model.GrupoDTO;
 import com.cedup.super_preco.model.MercadoDTO;
-import com.cedup.super_preco.model.dao.GrupoDAO;
 import com.cedup.super_preco.model.dao.MercadoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +19,7 @@ public class MercadoController {
     @GetMapping
     public List<MercadoDTO> getMercados() throws SQLException {
 
-        mercadoDTOS = mercadoDAO.getMercados();
+        mercadoDTOS = mercadoDAO.getAll();
 
         return mercadoDTOS;
     }
@@ -37,7 +35,7 @@ public class MercadoController {
     @PostMapping
     public MercadoDTO postGrupo(@RequestBody MercadoDTO dto) throws SQLException {
 
-        mercadoDAO.postMercado(dto);
+        mercadoDAO.insertMercado(dto);
 
         return dto;
     }
@@ -56,7 +54,7 @@ public class MercadoController {
 
         dto.setId(id);
 
-        mercadoDAO.putMercado(dto);
+        mercadoDAO.updateMercado(dto);
 
         return dto;
     }

@@ -1,6 +1,6 @@
 package com.cedup.super_preco;
 
-import com.cedup.super_preco.model.ProdutoDTO;
+import com.cedup.super_preco.model.Produto_MercadoDTO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,8 +14,8 @@ import java.util.List;
 @Service
 public class ScrapeKoch {
 
-    public List<ProdutoDTO> scrapeProducts() {
-        List<ProdutoDTO> produtos = new ArrayList<>();
+    public List<Produto_MercadoDTO> scrapeProducts() {
+        List<Produto_MercadoDTO> produtos = new ArrayList<>();
         try {
             // para contar o total de produtos que vão ser raspados
             int totalProductCount = 0;
@@ -24,7 +24,9 @@ public class ScrapeKoch {
             String baseUrl = "https://www.superkoch.com.br";
             // Lista de URLs usando o método 'asList'
             List<String> categoryPaths = Arrays.asList(
-                    "/bebidas/refrigerante"
+                    "/bebidas/refrigerante",
+                    "/outros/matinal/cafe",
+                    "/mercearia/massas"
             );
 
             // Iterando sobre cada URL
@@ -80,8 +82,8 @@ public class ScrapeKoch {
                         // imagem em baixa resolução/otimizada
                         String productImageLink = product.parent().selectFirst(".product-image-photo").attr("src");
 
-                        // cria nova instância de ProdutoDTO
-                        ProdutoDTO productInfo = new ProdutoDTO(0, 2, 1, productName, priceDouble, productHref, productImageLink);
+                        // cria nova instância de Produto_MercadoDTO
+                        Produto_MercadoDTO productInfo = new Produto_MercadoDTO(0, 2, 1, productName, priceDouble, productHref, productImageLink);
                         // adiciona o produto à lista 'produto"
                         produtos.add(productInfo);
 
