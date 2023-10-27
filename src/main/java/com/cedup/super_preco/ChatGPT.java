@@ -13,7 +13,7 @@ import org.springframework.http.HttpHeaders;
 public class ChatGPT {
     // limite de token = https://platform.openai.com/docs/models/gpt-3-5
     private static final String HTTPS_API_OPENAI_COM_V_1_COMPLETIONS = "https://api.openai.com/v1/completions";
-    private static final String OPENAI_MODEL = "gpt-4-0613";
+    private static final String OPENAI_MODEL = "gpt-4";
 
 
     @Value("${openai-api-key}")
