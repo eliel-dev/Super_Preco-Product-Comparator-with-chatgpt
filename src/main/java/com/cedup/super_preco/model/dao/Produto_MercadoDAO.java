@@ -144,4 +144,14 @@ public class Produto_MercadoDAO {
         }
         return produto;
     }
+
+    public void updateIdProduto(int idProdutoMercado, int idProduto) throws SQLException {
+        String sql = "UPDATE produto_mercado SET id_produto = ? WHERE id_produto_mercado = ?";
+        try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
+            stmt.setInt(1, idProduto);
+            stmt.setInt(2, idProdutoMercado);
+            stmt.executeUpdate();
+        }
+    }
+
 }

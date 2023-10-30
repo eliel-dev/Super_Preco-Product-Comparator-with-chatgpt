@@ -3,7 +3,9 @@ package com.cedup.super_preco.controller;
 import com.cedup.super_preco.ChatGPT;
 import com.cedup.super_preco.ScrapeCooper;
 import com.cedup.super_preco.ScrapeKoch;
+import com.cedup.super_preco.model.ProdutoDTO;
 import com.cedup.super_preco.model.Produto_MercadoDTO;
+import com.cedup.super_preco.model.dao.ProdutoDAO;
 import com.cedup.super_preco.model.dao.Produto_MercadoDAO;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -63,13 +65,11 @@ public class Produto_MercadoController {
         promptListaProduto.append("\\n\\nCooper:");
         for (Produto_MercadoDTO produto : produtosCooper) {
             promptListaProduto.append("\\n").append("id_produto: ").append(produto.id_produto_mercado).append(", nome: ").append(produto.nome);
-            System.out.println(produto);
         }
 
         promptListaProduto.append("\\n\\nSuperkoch:");
         for (Produto_MercadoDTO produto : produtosKoch) {
             promptListaProduto.append("\\n").append("id_produto: ").append(produto.id_produto_mercado).append(", nome: ").append(produto.nome);
-            System.out.println(produto);
         }
 
         // Remova a última vírgula e espaço
@@ -77,6 +77,9 @@ public class Produto_MercadoController {
 
         // Obter a resposta da API da OpenAI
         String response = chatGPT.getOpenAIResponse(promptListaProduto.toString());
+
+        // Lista para armazenar os novos produtos
+        List<ProdutoDTO> novosProdutos = new ArrayList<>();
 
         try {
             // Criar um ObjectMapper
@@ -88,7 +91,8 @@ public class Produto_MercadoController {
             // Obter o nó "choices"
             JsonNode choicesNode = rootNode.path("choices");
 
-            // Se o nó "choices" é um array e tem pelo menos um elemento
+            // Converter o conteúdo da resposta em um array de JsonNodes
+            JsonNode contentNode = null;
             if (choicesNode.isArray() && !choicesNode.isEmpty()) {
                 // Obter o primeiro elemento do array "choices"
                 JsonNode firstChoiceNode = choicesNode.get(0);
@@ -97,10 +101,61 @@ public class Produto_MercadoController {
                 JsonNode messageNode = firstChoiceNode.path("message");
 
                 // Obter o nó "content"
-                JsonNode contentNode = messageNode.path("content");
+                contentNode = messageNode.path("content");
 
-                // Imprimir o conteúdo no console
-                System.out.println("Conteúdo da resposta: " + contentNode.asText());
+            }
+
+            if (contentNode != null) {
+                // Converter o conteúdo da resposta em um array de JsonNodes
+                JsonNode grupos = new ObjectMapper().readTree(contentNode.asText());
+
+                // Para cada grupo identificado pela API da OpenAI
+                for (JsonNode grupo : grupos) {
+                    // Criar um novo Produto
+                    ProdutoDTO novoProduto = new ProdutoDTO();
+
+                    // Verificar se id_grupo não é nulo antes de acessá-lo
+                    JsonNode idGrupoNode = grupo.get("id_grupo");
+                    if (idGrupoNode != null) {
+                        novoProduto.setId(Integer.parseInt(idGrupoNode.asText()));
+                    }
+
+                    // Obter a lista de id_produto para este grupo
+                    JsonNode idProdutos = grupo.get("id_produto");
+
+                    // Verificar se idProdutos não é nulo e não está vazio antes de acessá-lo
+                    if (idProdutos != null && !idProdutos.isEmpty()) {
+                        // Obter o ID do primeiro produto na lista
+                        int idPrimeiroProduto = idProdutos.get(0).asInt();
+
+                        // Obter o Produto_MercadoDTO correspondente usando o método getProduto()
+                        Produto_MercadoDTO produto = produtoMercadoDAO.getProduto(idPrimeiroProduto);
+
+                        // Verificar se produto não é nulo antes de acessar seu campo nome
+                        if (produto != null) {
+                            novoProduto.setNome(produto.nome);
+                        }
+                    }
+
+                    // Inserir o novo Produto na tabela produto
+                    ProdutoDAO produtoDAO = new ProdutoDAO();
+                    produtoDAO.insertGrupo(novoProduto);
+
+                    // Adicionar o novo Produto à lista
+                    novosProdutos.add(novoProduto);
+
+                    System.out.println(novoProduto);
+
+                    // Verificar se idProdutos não é nulo antes de iterar sobre ele
+                    if (idProdutos != null) {
+                        for (JsonNode idProduto : idProdutos) {
+                            System.out.println("ID do Produto: " + idProduto.asInt());
+
+                            // Atualizar o id_produto na tabela produto_mercado
+                            produtoMercadoDAO.updateIdProduto(idProduto.asInt(), novoProduto.getId());
+                        }
+                    }
+                }
             }
 
         } catch (Exception e) {
@@ -108,7 +163,6 @@ public class Produto_MercadoController {
         }
         return response;
     }
-
 
     List<Produto_MercadoDTO> produtoMercadoDTOS = new ArrayList<>();
     @GetMapping

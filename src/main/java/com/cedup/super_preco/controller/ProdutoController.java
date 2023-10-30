@@ -35,7 +35,7 @@ public class ProdutoController {
     @PostMapping
     public ProdutoDTO postGrupo(@RequestBody ProdutoDTO dto) throws SQLException {
 
-        produtoDAO.postGrupo(dto);
+        produtoDAO.insertGrupo(dto);
 
         return dto;
     }

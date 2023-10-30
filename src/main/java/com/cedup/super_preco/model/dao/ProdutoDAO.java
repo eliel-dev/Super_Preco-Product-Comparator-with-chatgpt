@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,16 +43,12 @@ public class ProdutoDAO {
         }
     }
 
-    public ProdutoDTO postGrupo(ProdutoDTO grupo) throws SQLException {
-        String sql = "INSERT INTO produto (nome) VALUES (?)";
-        try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            stmt.setString(1, grupo.getNome());
+    public ProdutoDTO insertGrupo(ProdutoDTO grupo) throws SQLException {
+        String sql = "INSERT INTO produto (id_produto, nome) VALUES (?, ?)";
+        try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
+            stmt.setInt(1, grupo.getId());
+            stmt.setString(2, grupo.getNome());
             stmt.executeUpdate();
-
-            try (ResultSet rs = stmt.getGeneratedKeys()) {
-                rs.next();
-                grupo.id= rs.getInt(1);
-            }
         }
         return grupo;
     }
