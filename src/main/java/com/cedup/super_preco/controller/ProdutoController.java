@@ -25,7 +25,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/{id}")
-    public ProdutoDTO getGrupo(@PathVariable("id") int id) throws SQLException {
+    public ProdutoDTO getGrupo(@PathVariable("id") String id) throws SQLException {
 
         ProdutoDTO grupo2 = produtoDAO.getGrupo(id);
 
@@ -41,7 +41,7 @@ public class ProdutoController {
     }
 
     @DeleteMapping("/{id}")
-    public ProdutoDTO deletGrupo(@PathVariable("id") int id) throws SQLException {
+    public ProdutoDTO deletGrupo(@PathVariable("id") String id) throws SQLException {
         ProdutoDTO produtoDTO = new ProdutoDAO().getGrupo(id);
 
         produtoDAO.deleteGrupo(id);
@@ -50,7 +50,7 @@ public class ProdutoController {
     }
 
     @PutMapping("{id}")
-    public ProdutoDTO putGrupo(@PathVariable ("id") int id, @RequestBody ProdutoDTO dto) throws SQLException {
+    public ProdutoDTO putGrupo(@PathVariable ("id") String id, @RequestBody ProdutoDTO dto) throws SQLException {
 
         dto.setId(id);
 

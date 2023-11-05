@@ -1,6 +1,6 @@
 // Função para carregar produtos
 function carregarProdutos() {
-    fetch('http://localhost:8080/produto')
+    fetch('http://localhost:8080/produto/')
         .then(response => response.json())
         .then(data => {
             let row = document.querySelector('#lista-de-ofertas .row');
@@ -8,8 +8,8 @@ function carregarProdutos() {
             let gruposAdicionados = [];
             data.forEach(produto => {
                 // verifiqua se o algum produto com o mesmo id_grupo ja está na lista de adicionados, caso não tiver, então coloque um card do novo produto
-                if(!gruposAdicionados.includes(produto.id_grupo)) {
-                    gruposAdicionados.push(produto.id_grupo);
+                if(!gruposAdicionados.includes(produto.id_produto)) {
+                    gruposAdicionados.push(produto.id_produto);
                     // criando um novo card e colocando no botão 'comparar' que eu quero passar por parâmetro
                     row.innerHTML += `
                     <div class="col mb-3">
@@ -22,7 +22,7 @@ function carregarProdutos() {
                                 <div class="product-description">
                                 </div>
                                 <div class="product-action">
-                                <a class="btn btn-outline-dark" href="detalhes.html?id_produto=${produto.id_produto}&id_mercado=${produto.id_mercado}&nome=${produto.nome}&id_grupo=${produto.id_grupo}">Comparar</a>
+                                <a class="btn btn-outline-dark" href="detalhes.html?id_produto=${produto.id_produto_mercado}&id_mercado=${produto.id_mercado}&nome=${produto.nome}&id_grupo=${produto.id_produto}">Comparar</a>
                                 </div>
                             </div>
                         </div>

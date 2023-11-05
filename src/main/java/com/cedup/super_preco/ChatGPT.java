@@ -27,10 +27,12 @@ public class ChatGPT {
                 + "\"model\":\"" + OPENAI_MODEL + "\","
                 + "\"messages\":["
                 + "{\"role\":\"system\",\"content\":\"\"},"
-                + "{\"role\":\"user\",\"content\":\"Analise todos os produtos a seguir. Levando em consideração a marca, a seção, o sabor e peso. Gere um id_grupo, atribua o mesmo id_grupo para produtos correspondentes entre os mercados e um id_grupo único para aquele produto que não teve nenhuma correspondência. Por favor, pode me dar a resposta no formato json, dessa forma: {id_grupo: insira o id(numero) gerado aqui, id_produto: [insira o/os id(s) dos produtos aqui]}}\"},"
+                + "{\"role\":\"user\",\"content\":\"Analise todos os produtos a seguir. Levando em consideração a marca, a seção, o sabor e peso. Gere um id_grupo, atribua o mesmo id_grupo para produtos correspondentes entre os mercados e um id_grupo único para aquele produto que não teve nenhuma correspondência. Por favor, quero somente a resposta no formato json sem mais nenhum outro texto, dessa forma: {id_grupo: insira o id(numero) gerado aqui, id_produto: [insira o/os id(s) dos produtos aqui]}}\"},"
                 + "{\"role\":\"user\",\"content\":\"" + prompt + "\"}"
                 + "]"
                 + "}";
+
+        System.out.println(prompt);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

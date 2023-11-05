@@ -4,13 +4,13 @@ package com.cedup.super_preco.model;
 public class Produto_MercadoDTO {
     public int id_produto_mercado;
     public int id_mercado;
-    public int id_produto;
+    public String id_produto;
     public String nome;
     public double preco;
     public String link;
     public String link_img;
 
-    public Produto_MercadoDTO(int id_produto_mercado, int id_mercado, int id_produto, String nome, double preco, String link, String link_img) {
+    public Produto_MercadoDTO(int id_produto_mercado, int id_mercado, String id_produto, String nome, double preco, String link, String link_img) {
         this.id_produto_mercado = id_produto_mercado;
         this.id_mercado = id_mercado;
         this.id_produto = id_produto;
@@ -25,6 +25,14 @@ public class Produto_MercadoDTO {
         this.id_mercado = id_mercado;
         this.nome = nome;
     }
+
+    @Override
+    public String toString() {
+        return "\nProduto_MercadoDTO{" +
+                "\nnome='" + nome + '\'' +
+                '}';
+    }
+
 
     public int getId_produto_mercado() {
         return id_produto_mercado;
@@ -74,11 +82,11 @@ public class Produto_MercadoDTO {
         this.link_img = link_img;
     }
 
-    public int getId_produto() {
+    public String getId_produto() {
         return id_produto;
     }
 
-    public void setId_produto(int id_produto) {
+    public void setId_produto(String id_produto) {
         this.id_produto = id_produto;
     }
 }

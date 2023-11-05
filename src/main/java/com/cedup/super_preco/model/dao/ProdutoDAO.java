@@ -19,7 +19,7 @@ public class ProdutoDAO {
         try(PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery()) {
             while (resultado.next()) {
-                int id = resultado.getInt("id_produto");
+                String id = resultado.getString("id_produto");
                 String nome = resultado.getString("nome");
                 grupos.add(new ProdutoDTO(id, nome));
             }
@@ -27,12 +27,12 @@ public class ProdutoDAO {
         }
     }
 
-    public ProdutoDTO getGrupo(int id) throws SQLException {
+    public ProdutoDTO getGrupo(String id) throws SQLException {
         ProdutoDTO grupo = null;
         String sql = "SELECT * FROM produto where id_produto = ?";
 
         try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
-            stmt.setInt(1, id);
+            stmt.setString(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     String nome = rs.getString("nome");
@@ -46,18 +46,18 @@ public class ProdutoDAO {
     public ProdutoDTO insertGrupo(ProdutoDTO grupo) throws SQLException {
         String sql = "INSERT INTO produto (id_produto, nome) VALUES (?, ?)";
         try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
-            stmt.setInt(1, grupo.getId());
+            stmt.setString(1, grupo.getId());
             stmt.setString(2, grupo.getNome());
             stmt.executeUpdate();
         }
         return grupo;
     }
 
-    public void deleteGrupo(int id) throws SQLException{
+    public void deleteGrupo(String id) throws SQLException{
         String sql = "DELETE FROM produto WHERE id_produto=?";
 
         try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
-            stmt.setInt(1, id);
+            stmt.setString(1, id);
             stmt.executeUpdate();
         }
     }
@@ -66,7 +66,7 @@ public class ProdutoDAO {
         String sql = "UPDATE produto SET nome=? WHERE id_produto=?";
         try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
             stmt.setString(1, grupo.getNome());
-            stmt.setInt(2, grupo.getId());
+            stmt.setString(2, grupo.getId());
 
             stmt.executeUpdate();
         }

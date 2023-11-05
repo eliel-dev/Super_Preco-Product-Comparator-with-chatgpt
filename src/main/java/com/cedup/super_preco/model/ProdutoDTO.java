@@ -3,11 +3,11 @@ package com.cedup.super_preco.model;
 import java.util.List;
 
 public class ProdutoDTO {
-    private int id;
+    private String id;
     private String nome;
     private List<Integer> idProdutos; // nova lista de IDs de produtos
 
-    public ProdutoDTO(int id, String nome) {
+    public ProdutoDTO(String id, String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -20,11 +20,11 @@ public class ProdutoDTO {
         return "Grupo ID: " + id + ", Nome: " + nome;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
