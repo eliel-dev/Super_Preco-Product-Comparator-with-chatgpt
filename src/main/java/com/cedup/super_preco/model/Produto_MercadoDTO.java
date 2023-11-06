@@ -28,9 +28,8 @@ public class Produto_MercadoDTO {
 
     @Override
     public String toString() {
-        return "\nProduto_MercadoDTO{" +
-                "\nnome='" + nome + '\'' +
-                '}';
+        return "\n id_produto: " + id_produto_mercado + " nome: " + nome;
+
     }
 
 

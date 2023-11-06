@@ -63,9 +63,9 @@ public class Produto_MercadoController {
             String promptListaProduto = criarPromptListaProduto(loteProdutos);
 
             // Envia o prompt para a API da OpenAI e recebe a resposta
-            response = chatGPT.getOpenAIResponse(promptListaProduto);
+            //response = chatGPT.getOpenAIResponse(promptListaProduto);
 
-            //String response = "{\"choices\": []}";
+            response = "{\"choices\": []}";
 
             // Processa a resposta da API
             List<ProdutoDTO> novosProdutos = processarRespostaAPI(response);
@@ -148,7 +148,7 @@ public class Produto_MercadoController {
                     ProdutoDAO produtoDAO = new ProdutoDAO();
                     produtoDAO.insertGrupo(novoProduto);
                     novosProdutos.add(novoProduto);
-                    System.out.println(novoProduto);
+                    System.out.println("novoProduto" + novoProduto);
                     atualizarIdProduto(grupo, novoProduto);
                 }
             }
