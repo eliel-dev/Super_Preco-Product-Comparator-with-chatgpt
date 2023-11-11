@@ -1,27 +1,24 @@
-package com.cedup.super_preco.controller;
+package com.cedup.super_preco.controller.mercado;
 
-import com.cedup.super_preco.model.MercadoDTO;
-import com.cedup.super_preco.model.dao.MercadoDAO;
+import com.cedup.super_preco.model.mercado.MercadoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/mercado")
+@RequestMapping("/mercado/")
 public class MercadoController {
     @Autowired
     MercadoDAO mercadoDAO;
+    @Autowired
+    MercadoConverter mercadoConverter;
 
-    List<MercadoDTO> mercadoDTOS = new ArrayList<>();
     @GetMapping
-    public List<MercadoDTO> getMercados() throws SQLException {
-
-        mercadoDTOS = mercadoDAO.getAll();
-
-        return mercadoDTOS;
+    public ResponseEntity<List<MercadoDTO>> getMercados() throws SQLException {
+        return ResponseEntity.ok(mercadoConverter.toDTO(mercadoDAO.getAll()));
     }
 
     @GetMapping("/{id}")

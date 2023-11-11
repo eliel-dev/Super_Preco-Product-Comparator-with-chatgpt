@@ -1,4 +1,4 @@
-package com.cedup.super_preco.model;
+package com.cedup.super_preco.controller.mercado;
 
 
 public class MercadoDTO {

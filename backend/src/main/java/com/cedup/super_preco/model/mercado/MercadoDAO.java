@@ -1,8 +1,8 @@
-package com.cedup.super_preco.model.dao;
+package com.cedup.super_preco.model.mercado;
 
 import com.cedup.super_preco.ConnectionSingleton;
-import com.cedup.super_preco.model.MercadoDTO;
-import org.springframework.stereotype.Repository;
+import com.cedup.super_preco.controller.mercado.MercadoDTO;
+import org.springframework.stereotype.Component;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,24 +11,41 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+@Component
 public class MercadoDAO {
-    public List<MercadoDTO> getAll() throws SQLException {
-        List<MercadoDTO> mercados = new ArrayList<>();
-
+    public List<MercadoEntity> getAll() throws SQLException {
         String sql = "SELECT * FROM mercado";
         try(PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql);
             ResultSet rs = stmt.executeQuery()) {
+            List<MercadoEntity> resultadosComTodosMercados = new ArrayList<>();
             while (rs.next()) {
                 int id = rs.getInt("id_mercado");
                 String nome = rs.getString("nome");
-                mercados.add(new MercadoDTO(id, nome));
+
+                MercadoEntity mercadoDoBD = new MercadoEntity(id,nome);
+                resultadosComTodosMercados.add(mercadoDoBD);
             }
-            return mercados;
+            return resultadosComTodosMercados;
         }
     }
 
     public MercadoDTO getMercado(int id) throws SQLException {
+        MercadoDTO mercado = null;
+        String sql = "SELECT * FROM mercado where id_mercado = ?";
+
+        try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    String nome = rs.getString("nome");
+                    mercado = new MercadoDTO(id, nome);
+                }
+            }
+            return mercado;
+        }
+    }
+
+    public MercadoDTO getMercadoById(int id) throws SQLException {
         MercadoDTO mercado = null;
         String sql = "SELECT * FROM mercado where id_mercado = ?";
 

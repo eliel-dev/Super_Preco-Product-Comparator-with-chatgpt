@@ -1,12 +1,11 @@
-package com.cedup.super_preco.controller;
+package com.cedup.super_preco.controller.produto_mercado;
 
 import com.cedup.super_preco.ChatGPT;
 import com.cedup.super_preco.ScrapeCooper;
 import com.cedup.super_preco.ScrapeKoch;
-import com.cedup.super_preco.model.ProdutoDTO;
-import com.cedup.super_preco.model.Produto_MercadoDTO;
-import com.cedup.super_preco.model.dao.ProdutoDAO;
-import com.cedup.super_preco.model.dao.Produto_MercadoDAO;
+import com.cedup.super_preco.controller.produto.ProdutoDTO;
+import com.cedup.super_preco.model.produto.ProdutoDAO;
+import com.cedup.super_preco.model.produto_mercado.Produto_MercadoDAO;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +64,7 @@ public class Produto_MercadoController {
             // Envia o prompt para a API da OpenAI e recebe a resposta
             //response = chatGPT.getOpenAIResponse(promptListaProduto);
 
+            // Desativa envio para API GPT
             response = "{\"choices\": []}";
 
             // Processa a resposta da API
@@ -73,7 +73,6 @@ public class Produto_MercadoController {
 
         return response;
     }
-
 
     List<Produto_MercadoDTO> produtoMercadoDTOS = new ArrayList<>();
     @GetMapping
@@ -142,7 +141,10 @@ public class Produto_MercadoController {
             if (choicesNode.isArray() && !choicesNode.isEmpty()) {
                 JsonNode firstChoiceNode = choicesNode.get(0);
                 JsonNode messageNode = firstChoiceNode.path("message");
-                JsonNode grupos = mapper.readTree(messageNode.get("content").asText());
+                String content = messageNode.get("content").asText();
+                content = content.substring(content.indexOf('\n') + 1); // remove first line
+                content = content.substring(0, content.lastIndexOf('\n')); // remove last line
+                JsonNode grupos = mapper.readTree(content);
                 for (JsonNode grupo : grupos) {
                     ProdutoDTO novoProduto = criarNovoProduto(grupo);
                     ProdutoDAO produtoDAO = new ProdutoDAO();

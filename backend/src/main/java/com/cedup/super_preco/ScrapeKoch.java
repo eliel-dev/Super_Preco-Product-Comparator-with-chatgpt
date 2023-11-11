@@ -1,17 +1,17 @@
 package com.cedup.super_preco;
 
-import com.cedup.super_preco.model.Produto_MercadoDTO;
+import com.cedup.super_preco.controller.produto_mercado.Produto_MercadoDTO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Service
+@Component
 public class ScrapeKoch {
 
     public List<Produto_MercadoDTO> scrapeProducts() {
@@ -83,9 +83,9 @@ public class ScrapeKoch {
                         String productImageLink = product.parent().selectFirst(".product-image-photo").attr("src");
 
                         // cria nova instância de Produto_MercadoDTO
-                        Produto_MercadoDTO productInfo = new Produto_MercadoDTO(0, 2, "0", productName, priceDouble, productHref, productImageLink);
+                        //Produto_MercadoDTO productInfo = new Produto_MercadoDTO(0, 2, "0", productName, priceDouble, productHref, productImageLink);
                         // adiciona o produto à lista 'produto"
-                        produtos.add(productInfo);
+                        //produtos.add(productInfo);
 
                         System.out.println("Nome do produto: " + productName);
                         System.out.println("Href do produto: " + productHref);

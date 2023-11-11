@@ -1,11 +1,11 @@
-package com.cedup.super_preco.model;
+package com.cedup.super_preco.controller.produto;
 
 import java.util.List;
 
 public class ProdutoDTO {
-    private String id;
-    private String nome;
-    private List<Integer> idProdutos; // nova lista de IDs de produtos
+    public String id;
+    public String nome;
+    public List<Integer> idProdutos; // nova lista de IDs de produtos
 
     public ProdutoDTO(String id, String nome) {
         this.id = id;

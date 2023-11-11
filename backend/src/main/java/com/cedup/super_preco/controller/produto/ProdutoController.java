@@ -1,7 +1,6 @@
-package com.cedup.super_preco.controller;
+package com.cedup.super_preco.controller.produto;
 
-import com.cedup.super_preco.model.ProdutoDTO;
-import com.cedup.super_preco.model.dao.ProdutoDAO;
+import com.cedup.super_preco.model.produto.ProdutoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,7 +41,7 @@ public class ProdutoController {
 
     @DeleteMapping("/{id}")
     public ProdutoDTO deletGrupo(@PathVariable("id") String id) throws SQLException {
-        ProdutoDTO produtoDTO = new ProdutoDAO().getGrupo(id);
+        ProdutoDTO produtoDTO = produtoDAO.getGrupo(id);
 
         produtoDAO.deleteGrupo(id);
 

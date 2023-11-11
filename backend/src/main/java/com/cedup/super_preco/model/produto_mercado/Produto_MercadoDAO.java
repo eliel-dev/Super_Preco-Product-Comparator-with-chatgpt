@@ -1,8 +1,8 @@
-package com.cedup.super_preco.model.dao;
+package com.cedup.super_preco.model.produto_mercado;
 
 import com.cedup.super_preco.ConnectionSingleton;
-import com.cedup.super_preco.model.Produto_MercadoDTO;
-import org.springframework.stereotype.Repository;
+import com.cedup.super_preco.controller.produto_mercado.Produto_MercadoDTO;
+import org.springframework.stereotype.Component;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+@Component
 public class Produto_MercadoDAO {
     public List<Produto_MercadoDTO> getAll() throws SQLException {
         List<Produto_MercadoDTO> produtos = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Produto_MercadoDAO {
     public List<Produto_MercadoDTO> getByMercado(int limit, int offset) throws SQLException {
         List<Produto_MercadoDTO> produtos = new ArrayList<>();
 
-        String sql = "SELECT id_produto_mercado, id_mercado, nome FROM produto_mercado ORDER BY preco LIMIT ? OFFSET ?";
+        String sql = "SELECT id_produto_mercado, id_mercado, nome FROM produto_mercado ORDER BY nome LIMIT ? OFFSET ?";
         try(PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
             stmt.setInt(1, limit);
             stmt.setInt(2, offset);

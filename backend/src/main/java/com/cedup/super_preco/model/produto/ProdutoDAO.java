@@ -1,8 +1,8 @@
-package com.cedup.super_preco.model.dao;
+package com.cedup.super_preco.model.produto;
 
 import com.cedup.super_preco.ConnectionSingleton;
-import com.cedup.super_preco.model.ProdutoDTO;
-import org.springframework.stereotype.Repository;
+import com.cedup.super_preco.controller.produto.ProdutoDTO;
+import org.springframework.stereotype.Component;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+@Component
 public class ProdutoDAO {
     public List<ProdutoDTO> getGrupos() throws SQLException {
         List<ProdutoDTO> grupos = new ArrayList<>();
