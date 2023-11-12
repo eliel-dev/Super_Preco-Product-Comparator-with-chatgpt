@@ -28,7 +28,7 @@ public class Produto_MercadoController {
     @Autowired
     ChatGPT chatGPT;
 
-    @GetMapping ("/scrape/")
+    @GetMapping ("/scraping/")
     public List<Produto_MercadoDTO> getScraping() throws SQLException {
         // Chama o método de web scraping em cada serviço e obtenha as listas de produtos
         List<Produto_MercadoDTO> produtosCooper = scrapeCooper.scrapeProducts();
@@ -45,9 +45,9 @@ public class Produto_MercadoController {
         return allProdutos;
     }
 
-    @GetMapping("/testOpenAI/")
+    @GetMapping("/gpt/")
     public String testOpenAI() throws SQLException {
-        int loteSize = 50;
+        int loteSize = 500;
 
         // Obtenha o total de produtos do banco de dados
         int totalProdutos = produtoMercadoDAO.getTotalProdutos();
@@ -62,13 +62,13 @@ public class Produto_MercadoController {
             String promptListaProduto = criarPromptListaProduto(loteProdutos);
 
             // Envia o prompt para a API da OpenAI e recebe a resposta
-            //response = chatGPT.getOpenAIResponse(promptListaProduto);
+            response = chatGPT.getOpenAIResponse(promptListaProduto);
 
             // Desativa envio para API GPT
-            response = "{\"choices\": []}";
+            //response = "{\"choices\": []}";
 
             // Processa a resposta da API
-            List<ProdutoDTO> novosProdutos = processarRespostaAPI(response);
+            List<ProdutoDTO> novosProdutos = criaGruposProdutosDaAPI(response);
         }
 
         return response;
@@ -78,9 +78,13 @@ public class Produto_MercadoController {
     @GetMapping
     public List<Produto_MercadoDTO> getProdutos() throws SQLException {
 
-        produtoMercadoDTOS = produtoMercadoDAO.getAll();
+        return produtoMercadoDAO.getAll();
 
-        return produtoMercadoDTOS;
+    }
+
+    @GetMapping("/autocomplete/")
+    public List<Produto_MercadoDTO> autocomplete(@RequestParam String searchTerm) throws SQLException {
+        return produtoMercadoDAO.autocomplete(searchTerm);
     }
 
     @GetMapping("/grupo/{id_grupo}")
@@ -132,8 +136,8 @@ public class Produto_MercadoController {
         return promptListaProduto.toString();
     }
 
-    private List<ProdutoDTO> processarRespostaAPI(String response) {
-        List<ProdutoDTO> novosProdutos = new ArrayList<>();
+    private List<ProdutoDTO> criaGruposProdutosDaAPI(String response) {
+        List<ProdutoDTO> novoGrupoProdutoMercado = new ArrayList<>();
         try {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode rootNode = mapper.readTree(response);
@@ -141,44 +145,44 @@ public class Produto_MercadoController {
             if (choicesNode.isArray() && !choicesNode.isEmpty()) {
                 JsonNode firstChoiceNode = choicesNode.get(0);
                 JsonNode messageNode = firstChoiceNode.path("message");
-                String content = messageNode.get("content").asText();
-                content = content.substring(content.indexOf('\n') + 1); // remove first line
-                content = content.substring(0, content.lastIndexOf('\n')); // remove last line
-                JsonNode grupos = mapper.readTree(content);
-                for (JsonNode grupo : grupos) {
-                    ProdutoDTO novoProduto = criarNovoProduto(grupo);
+                String conteudoResposta = messageNode.get("content").asText();
+                conteudoResposta = conteudoResposta.substring(conteudoResposta.indexOf('\n') + 1); // remove first line
+                conteudoResposta = conteudoResposta.substring(0, conteudoResposta.lastIndexOf('\n')); // remove last line
+                JsonNode gruposDeProdutoMercado = mapper.readTree(conteudoResposta);
+                for (JsonNode grupo : gruposDeProdutoMercado) {
+                    ProdutoDTO novoProduto = criaGrupoProdutosDoMercado(grupo);
                     ProdutoDAO produtoDAO = new ProdutoDAO();
                     produtoDAO.insertGrupo(novoProduto);
-                    novosProdutos.add(novoProduto);
+                    novoGrupoProdutoMercado.add(novoProduto);
                     System.out.println("novoProduto" + novoProduto);
-                    atualizarIdProduto(grupo, novoProduto);
+                    atualizaIdProdutoDoGrupo(grupo, novoProduto);
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return novosProdutos;
+        return novoGrupoProdutoMercado;
     }
 
-    private ProdutoDTO criarNovoProduto(JsonNode grupo) throws SQLException {
-        ProdutoDTO novoProduto = new ProdutoDTO();
+    private ProdutoDTO criaGrupoProdutosDoMercado(JsonNode grupo) throws SQLException {
+        ProdutoDTO novoGrupoProdutoMercado = new ProdutoDTO();
         String idGrupoUUID = UUID.randomUUID().toString();
-        novoProduto.setId(idGrupoUUID);
+        novoGrupoProdutoMercado.setId(idGrupoUUID);
         JsonNode idProdutos = grupo.get("id_produto");
         if (idProdutos != null && idProdutos.isArray() && !idProdutos.isEmpty()) {
             int idPrimeiroProduto = idProdutos.get(0).asInt();
             Produto_MercadoDTO produto = produtoMercadoDAO.getProduto(idPrimeiroProduto);
             if (produto != null && produto.nome != null) {
-                novoProduto.setNome(produto.nome);
+                novoGrupoProdutoMercado.setNome(produto.nome);
             }
         }
-        return novoProduto;
+        return novoGrupoProdutoMercado;
     }
 
-    private void atualizarIdProduto(JsonNode grupo, ProdutoDTO novoProduto) throws SQLException {
-        JsonNode idProdutos = grupo.get("id_produto");
-        if (idProdutos != null && idProdutos.isArray()) {
-            for (JsonNode idProduto_nercado : idProdutos) {
+    private void atualizaIdProdutoDoGrupo(JsonNode grupo, ProdutoDTO novoProduto) throws SQLException {
+        JsonNode idsProdutoMercado = grupo.get("id_produto");
+        if (idsProdutoMercado != null && idsProdutoMercado.isArray()) {
+            for (JsonNode idProduto_nercado : idsProdutoMercado) {
                 System.out.println("ID do Produto_Mercado: " + idProduto_nercado.asInt());
                 produtoMercadoDAO.updateIdProduto(idProduto_nercado.asInt(), novoProduto.getId());
             }

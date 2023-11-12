@@ -30,6 +30,9 @@ if (id_produto) {
                 } else if (produto.id_mercado === 2) {
                     mercadoLogo = "img/koch2.webp";
                     mercadoNome = "SuperKoch";
+                    if (!document.getElementById('imagem').src) {
+                        document.getElementById('imagem').src = produto.link_img;
+                    }
                     if (!document.getElementById('nome_produto').innerText) {
                         document.getElementById('nome_produto').innerText = produto.nome;
                     }
@@ -37,7 +40,6 @@ if (id_produto) {
                 // cria um div e defini uma classe para el
                 let col = document.createElement('div');
                 col.className = "col-sm-4 mb-3";
-
                 col.innerHTML = `
                             <div class="card">
                                 <div class="card-body d-flex align-items-center">

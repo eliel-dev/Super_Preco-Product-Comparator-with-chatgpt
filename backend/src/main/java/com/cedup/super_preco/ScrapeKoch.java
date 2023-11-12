@@ -24,9 +24,9 @@ public class ScrapeKoch {
             String baseUrl = "https://www.superkoch.com.br";
             // Lista de URLs usando o método 'asList'
             List<String> categoryPaths = Arrays.asList(
-                    "/bebidas/refrigerante",
-                    "/outros/matinal/cafe",
-                    "/mercearia/massas"
+                    "/bebidas/refrigerante"
+//                    "/outros/matinal/cafe",
+//                    "/mercearia/massas"
             );
 
             // Iterando sobre cada URL
@@ -83,9 +83,9 @@ public class ScrapeKoch {
                         String productImageLink = product.parent().selectFirst(".product-image-photo").attr("src");
 
                         // cria nova instância de Produto_MercadoDTO
-                        //Produto_MercadoDTO productInfo = new Produto_MercadoDTO(0, 2, "0", productName, priceDouble, productHref, productImageLink);
+                        Produto_MercadoDTO productInfo = new Produto_MercadoDTO(0, 2, "0", productName, priceDouble, productHref, productImageLink);
                         // adiciona o produto à lista 'produto"
-                        //produtos.add(productInfo);
+                        produtos.add(productInfo);
 
                         System.out.println("Nome do produto: " + productName);
                         System.out.println("Href do produto: " + productHref);

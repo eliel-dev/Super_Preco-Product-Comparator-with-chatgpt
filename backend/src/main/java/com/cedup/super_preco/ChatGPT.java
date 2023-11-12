@@ -12,8 +12,13 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class ChatGPT {
     // limite de token = https://platform.openai.com/docs/models/gpt-3-5
-    private static final String HTTPS_API_OPENAI_COM_V_1_COMPLETIONS = "https://api.openai.com/v1/completions";
+    private static final String HTTPS_API_OPENAI_COM_V_1_COMPLETIONS = "https://api.openai.com/v1/chat/completions";
     private static final String OPENAI_MODEL = "gpt-4-1106-preview";
+    String systemMessage = "";
+    String userMessage = "Analise todos os produtos a seguir. Levando em consideração a marca, a seção, o sabor e peso." +
+            " Gere um id_grupo, atribua o mesmo id_grupo para produtos correspondentes entre os mercados e um id_grupo único para aquele produto que não teve nenhuma correspondência." +
+            " Por favor, quero somente a resposta no formato json puro sem mais nenhum outro texto, exatamente dessa forma:" +
+            " {id_grupo: insira o id(numero) gerado aqui, id_produto: [insira o/os id(s) dos produtos aqui]}";
 
     @Value("${openai-api-key}")
     private String apiKey;
@@ -26,10 +31,7 @@ public class ChatGPT {
                 + "\"model\":\"" + OPENAI_MODEL + "\","
                 + "\"messages\":["
                 + "{\"role\":\"system\",\"content\":\"\"},"
-                + "{\"role\":\"user\",\"content\":\"Analise todos os produtos a seguir. Levando em consideração a marca, a seção, o sabor e peso." +
-                " Gere um id_grupo, atribua o mesmo id_grupo para produtos correspondentes entre os mercados e um id_grupo único para aquele produto que não teve nenhuma correspondência." +
-                " Por favor, quero somente a resposta no formato json puro sem mais nenhum outro texto, exatamente dessa forma:" +
-                " {id_grupo: insira o id(numero) gerado aqui, id_produto: [insira o/os id(s) dos produtos aqui]}}\"},"
+                + "{\"role\":\"user\",\"content\":\"" + userMessage + "\"},"
                 + "{\"role\":\"user\",\"content\":\"" + prompt + "\"}"
                 + "]"
                 + "}";

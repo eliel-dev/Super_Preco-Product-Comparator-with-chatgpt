@@ -24,7 +24,7 @@ public class ScrapeCooper {
             // URL base do site
             String baseUrl = "https://www.minhacooper.com.br/loja/centro-timbo/produto/listar/";
             // Lista de IDs das categorias que foram tiradas da url do site
-            List<String> categoryIds = Arrays.asList("205", "40", "197");
+            List<String> categoryIds = Arrays.asList("205"); //, "40", "197"
 
             // Iterando sobre cada ID de categoria
             for (String categoryId : categoryIds) {
@@ -77,9 +77,9 @@ public class ScrapeCooper {
                         String productImageLink =  "https:" + product.parent().selectFirst(".product-variation__image-container img").attr("src");
 
                         // cria uma nova instância de Produto_MercadoDTO
-                        //Produto_MercadoDTO productInfo = new Produto_MercadoDTO(0, 1, "0", productName, priceDouble, productHref, productImageLink);
+                        Produto_MercadoDTO productInfo = new Produto_MercadoDTO(0, 1, "0", productName, priceDouble, productHref, productImageLink);
                         // adiciona o produto à lista
-                        //produtos.add(productInfo);
+                        produtos.add(productInfo);
 
                         System.out.println("Nome do produto: " + productName);
                         System.out.println("Href do produto: " + productHref);

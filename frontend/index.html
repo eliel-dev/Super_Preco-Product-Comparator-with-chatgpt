@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- SEGUIR O ESCOPO!!!!!!!!!-->
     <meta charset="utf-8" />
@@ -14,6 +15,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
 </head>
+
 <body>
     <!-- Navegação-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,13 +43,18 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex">
-                </form>
             </div>
         </div>
     </nav>
     <!-- Lista mercados disponíveis-->
     <section id="lista-de-ofertas" class="py-5 bg-light">
+        <div class="d-flex">
+            <div class="form-container">
+                <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                <ul id="lista-sugestoes"></ul>
+            </div>
+            <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+        </div>
         <div class="container px-4 px-lg-5 mt-5">
             <!-- "row = linha horizontal" // "cols-1 = colunas de largura total " // "g-4 = espaçamento entre as colunas"-->
             <div class="row row-cols-1 row-cols-md-5 g-4">

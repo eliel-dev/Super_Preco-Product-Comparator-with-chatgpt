@@ -8050,6 +8050,11 @@ h2.container.px-4.px-lg-5.mt-5 {
 
 .d-flex {
   display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 22vh; /* Ajuste a altura conforme necessário */
+  margin: 0;
+  padding: 0;
 }
 
 .d-inline-flex {
@@ -8652,7 +8657,9 @@ h2.container.px-4.px-lg-5.mt-5 {
 }
 
 .me-2 {
-  margin-right: 0.5rem !important;
+  margin-right: 1.5rem !important;
+  width: 50rem;
+  margin: auto;
 }
 
 .me-3 {
@@ -14109,5 +14116,28 @@ url("./fonts/bootstrap-icons.woff?856008caa5eb66df68595e734e59580d") format("wof
 @font-face {
   font-family: 'FabricMDL2Icons';
   src: url('fabric-icons.woff') format('woff');
+}
+
+.form-container {
+  position: relative;
+}
+
+#lista-sugestoes {
+  background-color: white;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  /* outros estilos */
+}
+#lista-sugestoes li {
+  padding: 10px;
+  cursor: pointer;
+  //width: 900px;
+  height: auto;
+}
+#lista-sugestoes li:hover {
+  background-color: #ccc;
 }
 
