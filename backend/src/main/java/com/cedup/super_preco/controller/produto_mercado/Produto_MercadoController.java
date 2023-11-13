@@ -47,7 +47,7 @@ public class Produto_MercadoController {
 
     @GetMapping("/gpt/")
     public String testOpenAI() throws SQLException {
-        int loteSize = 500;
+        int loteSize = 25;
 
         // Obtenha o total de produtos do banco de dados
         int totalProdutos = produtoMercadoDAO.getTotalProdutos();
