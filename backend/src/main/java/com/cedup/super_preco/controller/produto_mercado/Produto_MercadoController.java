@@ -18,6 +18,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/produto/")
+@CrossOrigin(origins = "*")
 public class Produto_MercadoController {
     @Autowired
     Produto_MercadoDAO produtoMercadoDAO;

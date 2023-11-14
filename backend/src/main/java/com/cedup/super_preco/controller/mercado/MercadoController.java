@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/mercado/")
+@CrossOrigin(origins = "*")
 public class MercadoController {
     @Autowired
     MercadoDAO mercadoDAO;

@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping ("/grupo")
+@CrossOrigin(origins = "*")
 public class ProdutoController {
     @Autowired
     ProdutoDAO produtoDAO;
