@@ -1,6 +1,5 @@
-package com.cedup.super_preco;
+package com.cedup.super_preco.controller.produto_mercado;
 
-import com.cedup.super_preco.controller.produto_mercado.Produto_MercadoDTO;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class ScrapeCooper {
+public class CooperScrapper {
 
     public List<Produto_MercadoDTO> scrapeProducts () {
         List<Produto_MercadoDTO> produtos = new ArrayList<>();

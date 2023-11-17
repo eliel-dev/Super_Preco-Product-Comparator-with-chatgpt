@@ -33,13 +33,33 @@ public class Produto_MercadoDAO {
         }
     }
 
-    public List<Produto_MercadoDTO> autocomplete(String searchTerm) throws SQLException {
+//    public List<Produto_MercadoDTO> autocomplete(String searchTerm) throws SQLException {
+//        List<Produto_MercadoDTO> produtos = new ArrayList<>();
+//
+//        String sql = "SELECT * FROM produto_mercado WHERE nome LIKE ?";
+//        try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
+//            stmt.setString(1, "%" + searchTerm + "%");
+//            ResultSet resultado = stmt.executeQuery();
+//            while (resultado.next()) {
+//                int id_produto_mercado = resultado.getInt("id_produto_mercado");
+//                int id_mercado = resultado.getInt("id_mercado");
+//                String id_produto = resultado.getString("id_produto");
+//                String nome = resultado.getString("nome");
+//                double preco = resultado.getDouble("preco");
+//                String link = resultado.getString("link");
+//                String link_img = resultado.getString("link_img");
+//                produtos.add(new Produto_MercadoDTO(id_produto_mercado, id_mercado, id_produto, nome, preco, link, link_img));
+//            }
+//        }
+//        return produtos;
+//    }
+
+    public List<Produto_MercadoDTO> getUniqueProdutos() throws SQLException {
         List<Produto_MercadoDTO> produtos = new ArrayList<>();
 
-        String sql = "SELECT * FROM produto_mercado WHERE nome LIKE ?";
-        try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
-            stmt.setString(1, "%" + searchTerm + "%");
-            ResultSet resultado = stmt.executeQuery();
+        String sql = "SELECT * FROM produto_mercado GROUP BY id_produto";
+        try(PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql);
+            ResultSet resultado = stmt.executeQuery()) {
             while (resultado.next()) {
                 int id_produto_mercado = resultado.getInt("id_produto_mercado");
                 int id_mercado = resultado.getInt("id_mercado");

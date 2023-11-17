@@ -1,4 +1,4 @@
-package com.cedup.super_preco;
+package com.cedup.super_preco.controller.produto_mercado;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;

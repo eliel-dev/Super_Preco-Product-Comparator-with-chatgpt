@@ -1,15 +1,12 @@
 // Função para carregar produtos
 function carregarProdutos() {
-    fetch('http://localhost:8080/produto/')
+    fetch('http://localhost:8080/produto/produtos/')
         .then(response => response.json())
         .then(data => {
             let row = document.querySelector('#lista-de-ofertas .row');
             // lista com grupos que já foram adicionados, serve para colocar 1 produto por grupo na pagina inicial
             let gruposAdicionados = [];
             data.forEach(produto => {
-                // verifiqua se o algum produto com o mesmo id_grupo ja está na lista de adicionados, caso não tiver, então coloque um card do novo produto
-                if (!gruposAdicionados.includes(produto.id_produto)) {
-                    gruposAdicionados.push(produto.id_produto);
                     // criando um novo card e colocando no botão 'comparar' que eu quero passar por parâmetro
                     row.innerHTML += `
                     <div class="col mb-3">
@@ -27,12 +24,10 @@ function carregarProdutos() {
                             </div>
                         </div>
                     </div>`;
-                }
             });
         })
         .catch(error => console.error('Erro:', error));
 }
-
 
 // Chamar a função quando a página carregar
 window.onload = carregarProdutos;

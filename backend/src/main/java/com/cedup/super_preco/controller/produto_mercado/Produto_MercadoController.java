@@ -1,8 +1,5 @@
 package com.cedup.super_preco.controller.produto_mercado;
 
-import com.cedup.super_preco.ChatGPT;
-import com.cedup.super_preco.ScrapeCooper;
-import com.cedup.super_preco.ScrapeKoch;
 import com.cedup.super_preco.controller.produto.ProdutoDTO;
 import com.cedup.super_preco.model.produto.ProdutoDAO;
 import com.cedup.super_preco.model.produto_mercado.Produto_MercadoDAO;
@@ -23,17 +20,17 @@ public class Produto_MercadoController {
     @Autowired
     Produto_MercadoDAO produtoMercadoDAO;
     @Autowired
-    ScrapeCooper scrapeCooper;
+    CooperScrapper cooperScrapper;
     @Autowired
-    ScrapeKoch scrapeKoch;
+    KochScrapper kochScrapper;
     @Autowired
     ChatGPT chatGPT;
 
     @GetMapping ("/scraping/")
     public List<Produto_MercadoDTO> getScraping() throws SQLException {
         // Chama o método de web scraping em cada serviço e obtenha as listas de produtos
-        List<Produto_MercadoDTO> produtosCooper = scrapeCooper.scrapeProducts();
-        List<Produto_MercadoDTO> produtosKoch = scrapeKoch.scrapeProducts();
+        List<Produto_MercadoDTO> produtosCooper = cooperScrapper.scrapeProducts();
+        List<Produto_MercadoDTO> produtosKoch = kochScrapper.scrapeProducts();
 
         // Combina as duas listas em uma
         List<Produto_MercadoDTO> allProdutos = new ArrayList<>();
@@ -83,9 +80,16 @@ public class Produto_MercadoController {
 
     }
 
-    @GetMapping("/autocomplete/")
-    public List<Produto_MercadoDTO> autocomplete(@RequestParam String searchTerm) throws SQLException {
-        return produtoMercadoDAO.autocomplete(searchTerm);
+//    @GetMapping("/autocomplete/")
+//    public List<Produto_MercadoDTO> autocomplete(@RequestParam String searchTerm) throws SQLException {
+//        return produtoMercadoDAO.autocomplete(searchTerm);
+//    }
+List<Produto_MercadoDTO> getOnePerGroup = new ArrayList<>();
+    @GetMapping("/produtos/")
+    public List<Produto_MercadoDTO> getUniqueProdutos() throws SQLException {
+
+        return produtoMercadoDAO.getAll();
+
     }
 
     @GetMapping("/grupo/{id_grupo}")
