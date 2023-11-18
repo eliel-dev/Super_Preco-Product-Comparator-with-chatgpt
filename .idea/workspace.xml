@@ -10,6 +10,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -65,7 +72,7 @@
       <updated>1700331460102</updated>
       <workItem from="1700331461251" duration="97000" />
       <workItem from="1700332302937" duration="56000" />
-      <workItem from="1700332385849" duration="2792000" />
+      <workItem from="1700332385849" duration="11246000" />
     </task>
     <servers />
   </component>

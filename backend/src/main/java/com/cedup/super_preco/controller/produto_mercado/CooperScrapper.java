@@ -1,5 +1,8 @@
 package com.cedup.super_preco.controller.produto_mercado;
 
+import com.cedup.super_preco.model.mercado.MercadoEntity;
+import com.cedup.super_preco.model.produto.ProdutoEntity;
+import com.cedup.super_preco.model.produto_mercado.Produto_MercadoEntity;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,8 +17,8 @@ import java.util.List;
 @Component
 public class CooperScrapper {
 
-    public List<Produto_MercadoDTO> scrapeProducts () {
-        List<Produto_MercadoDTO> produtos = new ArrayList<>();
+    public List<Produto_MercadoEntity> scrapeProducts () {
+        List<Produto_MercadoEntity> produtos = new ArrayList<>();
         try {
             // para contar o total de produtos que vão ser raspados
             int totalProductCount = 0;
@@ -76,7 +79,7 @@ public class CooperScrapper {
                         String productImageLink =  "https:" + product.parent().selectFirst(".product-variation__image-container img").attr("src");
 
                         // cria uma nova instância de Produto_MercadoDTO
-                        Produto_MercadoDTO productInfo = new Produto_MercadoDTO(0, 1, "0", productName, priceDouble, productHref, productImageLink);
+                        Produto_MercadoEntity productInfo = new Produto_MercadoEntity(0, new MercadoEntity(1), new ProdutoEntity("0"), productName, priceDouble, productHref, productImageLink);
                         // adiciona o produto à lista
                         produtos.add(productInfo);
 

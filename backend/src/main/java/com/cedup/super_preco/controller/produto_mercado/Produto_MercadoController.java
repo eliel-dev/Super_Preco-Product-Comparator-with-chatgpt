@@ -5,6 +5,7 @@ import com.cedup.super_preco.controller.produto.ProdutoDTO;
 import com.cedup.super_preco.model.produto.ProdutoDAO;
 import com.cedup.super_preco.model.produto.ProdutoEntity;
 import com.cedup.super_preco.model.produto_mercado.Produto_MercadoDAO;
+import com.cedup.super_preco.model.produto_mercado.Produto_MercadoEntity;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,20 +28,24 @@ public class Produto_MercadoController {
     KochScrapper kochScrapper;
     @Autowired
     ChatGPT chatGPT;
+    @Autowired
+    Produto_MercadoConverter produtoMercadoConverter;
 
     @GetMapping ("/scraping/")
-    public List<Produto_MercadoDTO> getScraping() throws SQLException {
+    public List<Produto_MercadoEntity> getScraping() throws SQLException {
         // Chama o método de web scraping em cada serviço e obtenha as listas de produtos
-        List<Produto_MercadoDTO> produtosCooper = cooperScrapper.scrapeProducts();
-        List<Produto_MercadoDTO> produtosKoch = kochScrapper.scrapeProducts();
+        List<Produto_MercadoEntity> produtosCooper = cooperScrapper.scrapeProducts();
+        List<Produto_MercadoEntity> produtosKoch = kochScrapper.scrapeProducts();
 
         // Combina as duas listas em uma
-        List<Produto_MercadoDTO> allProdutos = new ArrayList<>();
+        List<Produto_MercadoEntity> allProdutos = new ArrayList<>();
         allProdutos.addAll(produtosCooper);
         allProdutos.addAll(produtosKoch);
 
-        // Passa a lista combinada de produtos para o método postProdutos() do seu DAO
-        produtoMercadoDAO.postProdutos(allProdutos);
+        // Passa cada produto da lista combinada para o método addProduto() do seu DAO
+        for (Produto_MercadoEntity produtoEntity : allProdutos) {
+            produtoMercadoDAO.addProduto(produtoEntity);
+        }
 
         return allProdutos;
     }
@@ -77,7 +82,7 @@ public class Produto_MercadoController {
     @GetMapping
     public List<Produto_MercadoDTO> getProdutos() throws SQLException {
 
-        return produtoMercadoDAO.getAll();
+        return produtoMercadoConverter.toDTO(produtoMercadoDAO.getAll());
 
     }
 
@@ -89,15 +94,16 @@ public class Produto_MercadoController {
     @GetMapping("/produtos/")
     public List<Produto_MercadoDTO> getUniqueProdutos() throws SQLException {
 
-        return produtoMercadoDAO.getAll();
-
+        return produtoMercadoConverter.toDTO(produtoMercadoDAO.getUniqueProdutos());
     }
+
 
     @GetMapping("/grupo/{id_grupo}")
     public List<Produto_MercadoDTO> getProdutosPorGrupo(@PathVariable String id_grupo) throws SQLException {
         List<Produto_MercadoDTO> grupo2 = produtoMercadoDAO.getProdutosPorGrupo(id_grupo);
         return grupo2;
     }
+
 
 
     private String criarPromptListaProduto(List<Produto_MercadoDTO> produtos) {

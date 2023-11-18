@@ -1,5 +1,8 @@
 package com.cedup.super_preco.controller.produto_mercado;
 
+import com.cedup.super_preco.model.mercado.MercadoEntity;
+import com.cedup.super_preco.model.produto.ProdutoEntity;
+import com.cedup.super_preco.model.produto_mercado.Produto_MercadoEntity;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -13,8 +16,8 @@ import java.util.List;
 @Component
 public class KochScrapper {
 
-    public List<Produto_MercadoDTO> scrapeProducts() {
-        List<Produto_MercadoDTO> produtos = new ArrayList<>();
+    public List<Produto_MercadoEntity> scrapeProducts() {
+        List<Produto_MercadoEntity> produtos = new ArrayList<>();
         try {
             // para contar o total de produtos que vão ser raspados
             int totalProductCount = 0;
@@ -81,7 +84,7 @@ public class KochScrapper {
                         String productImageLink = product.parent().selectFirst(".product-image-photo").attr("src");
 
                         // cria nova instância de Produto_MercadoDTO
-                        Produto_MercadoDTO productInfo = new Produto_MercadoDTO(0, 2, "0", productName, priceDouble, productHref, productImageLink);
+                        Produto_MercadoEntity productInfo = new Produto_MercadoEntity(0, new MercadoEntity(2), new ProdutoEntity("0"), productName, priceDouble, productHref, productImageLink);
                         // adiciona o produto à lista 'produto"
                         produtos.add(productInfo);
 

@@ -11,4 +11,8 @@ public class ProdutoEntity {
 
     public ProdutoEntity() {
     }
+
+    public ProdutoEntity(String id_produto) {
+        this.id_produto = id_produto;
+    }
 }

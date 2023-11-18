@@ -11,4 +11,8 @@ public class MercadoEntity {
 
     public MercadoEntity() {
     }
+
+    public MercadoEntity(int id_mercado) {
+        this.id_mercado = id_mercado;
+    }
 }
