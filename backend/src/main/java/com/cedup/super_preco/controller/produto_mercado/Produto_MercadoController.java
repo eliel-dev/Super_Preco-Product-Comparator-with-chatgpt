@@ -1,7 +1,9 @@
 package com.cedup.super_preco.controller.produto_mercado;
 
+import com.cedup.super_preco.controller.produto.ProdutoConverter;
 import com.cedup.super_preco.controller.produto.ProdutoDTO;
 import com.cedup.super_preco.model.produto.ProdutoDAO;
+import com.cedup.super_preco.model.produto.ProdutoEntity;
 import com.cedup.super_preco.model.produto_mercado.Produto_MercadoDAO;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -44,7 +46,7 @@ public class Produto_MercadoController {
     }
 
     @GetMapping("/gpt/")
-    public String testOpenAI() throws SQLException {
+    public String sentGPT() throws SQLException {
         int loteSize = 25;
 
         // Obtenha o total de produtos do banco de dados
@@ -72,7 +74,6 @@ public class Produto_MercadoController {
         return response;
     }
 
-    List<Produto_MercadoDTO> produtoMercadoDTOS = new ArrayList<>();
     @GetMapping
     public List<Produto_MercadoDTO> getProdutos() throws SQLException {
 
@@ -84,7 +85,7 @@ public class Produto_MercadoController {
 //    public List<Produto_MercadoDTO> autocomplete(@RequestParam String searchTerm) throws SQLException {
 //        return produtoMercadoDAO.autocomplete(searchTerm);
 //    }
-List<Produto_MercadoDTO> getOnePerGroup = new ArrayList<>();
+
     @GetMapping("/produtos/")
     public List<Produto_MercadoDTO> getUniqueProdutos() throws SQLException {
 
@@ -98,40 +99,6 @@ List<Produto_MercadoDTO> getOnePerGroup = new ArrayList<>();
         return grupo2;
     }
 
-    @GetMapping("/{id}")
-    public Produto_MercadoDTO getProdutp(@PathVariable("id") int id) throws SQLException {
-
-        Produto_MercadoDTO produto2 = produtoMercadoDAO.getProduto(id);
-
-        return produto2;
-    }
-
-    @PostMapping
-    public Produto_MercadoDTO postProduto(@RequestBody Produto_MercadoDTO dto) throws SQLException {
-
-        produtoMercadoDAO.postProduto(dto);
-
-        return dto;
-    }
-
-    @DeleteMapping("/{id}")
-    public Produto_MercadoDTO deleteProduto(@PathVariable("id") int id) throws SQLException {
-        Produto_MercadoDTO grupoDTO = new Produto_MercadoDAO().getProduto(id);
-
-        produtoMercadoDAO.deleteProduto(id);
-
-        return grupoDTO;
-    }
-
-    @PutMapping("{id}")
-    public Produto_MercadoDTO putProduto(@PathVariable ("id") int id, @RequestBody Produto_MercadoDTO dto) throws SQLException {
-
-        dto.setId_produto_mercado(id);
-
-        produtoMercadoDAO.putProduto(dto);
-
-        return dto;
-    }
 
     private String criarPromptListaProduto(List<Produto_MercadoDTO> produtos) {
         StringBuilder promptListaProduto = new StringBuilder();
@@ -156,8 +123,10 @@ List<Produto_MercadoDTO> getOnePerGroup = new ArrayList<>();
                 JsonNode gruposDeProdutoMercado = mapper.readTree(conteudoResposta);
                 for (JsonNode grupo : gruposDeProdutoMercado) {
                     ProdutoDTO novoProduto = criaGrupoProdutosDoMercado(grupo);
+                    ProdutoConverter produtoConverter = new ProdutoConverter();
+                    ProdutoEntity entity = produtoConverter.toEntity(novoProduto);
                     ProdutoDAO produtoDAO = new ProdutoDAO();
-                    produtoDAO.insertGrupo(novoProduto);
+                    produtoDAO.insertGrupo(entity);
                     novoGrupoProdutoMercado.add(novoProduto);
                     System.out.println("novoProduto" + novoProduto);
                     atualizaIdProdutoDoGrupo(grupo, novoProduto);
@@ -168,6 +137,7 @@ List<Produto_MercadoDTO> getOnePerGroup = new ArrayList<>();
         }
         return novoGrupoProdutoMercado;
     }
+
 
     private ProdutoDTO criaGrupoProdutosDoMercado(JsonNode grupo) throws SQLException {
         ProdutoDTO novoGrupoProdutoMercado = new ProdutoDTO();
