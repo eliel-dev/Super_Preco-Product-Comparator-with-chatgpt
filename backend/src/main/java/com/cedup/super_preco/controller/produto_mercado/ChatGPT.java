@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class ChatGPT {
     // limite de token = https://platform.openai.com/docs/models/gpt-3-5
-    private static final String HTTPS_API_OPENAI_COM_V_1_COMPLETIONS = "https://api.openai.com/v1/chat/completions";
+    private static final String endpoint = "https://api.openai.com/v1/chat/completions";
     private static final String OPENAI_MODEL = "gpt-4-1106-preview";
     String systemMessage = "";
     String userMessage = "Analise todos os produtos a seguir, levando em consideração a marca, a seção, o sabor e o volume (em ml ou l) de cada um." +
@@ -44,7 +44,7 @@ public class ChatGPT {
         headers.set("Authorization", "Bearer " + apiKey);
 
         HttpEntity<String> entity = new HttpEntity<>(requestJson, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity("https://api.openai.com/v1/chat/completions", entity, String.class);
+        ResponseEntity<String> response = restTemplate.postForEntity(endpoint, entity, String.class);
 
         return response.getBody();
     }

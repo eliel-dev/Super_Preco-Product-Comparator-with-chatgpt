@@ -9,6 +9,8 @@ import com.cedup.super_preco.model.produto_mercado.Produto_MercadoEntity;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -31,8 +33,9 @@ public class Produto_MercadoController {
     @Autowired
     Produto_MercadoConverter produtoMercadoConverter;
 
-    @GetMapping ("/scraping/")
-    public List<Produto_MercadoEntity> getScraping() throws SQLException {
+
+    @PostMapping ("/scraping/")
+    public ResponseEntity<List<Produto_MercadoEntity>> getScraping() throws SQLException {
         // Chama o método de web scraping em cada serviço e obtenha as listas de produtos
         List<Produto_MercadoEntity> produtosCooper = cooperScrapper.scrapeProducts();
         List<Produto_MercadoEntity> produtosKoch = kochScrapper.scrapeProducts();
@@ -46,12 +49,36 @@ public class Produto_MercadoController {
         for (Produto_MercadoEntity produtoEntity : allProdutos) {
             produtoMercadoDAO.addProduto(produtoEntity);
         }
-
-        return allProdutos;
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping("/gpt/")
-    public String sentGPT() throws SQLException {
+    @GetMapping
+    public ResponseEntity<List<Produto_MercadoDTO>> getProdutos() throws SQLException {
+
+        return ResponseEntity.ok().body(produtoMercadoConverter.toDTO(produtoMercadoDAO.getAll()));
+
+    }
+
+//    @GetMapping("/autocomplete/")
+//    public List<Produto_MercadoDTO> autocomplete(@RequestParam String searchTerm) throws SQLException {
+//        return produtoMercadoDAO.autocomplete(searchTerm);
+//    }
+
+    @GetMapping("/produtos/")
+    public ResponseEntity<List<Produto_MercadoDTO>> getUniqueProdutos() throws SQLException {
+
+        return ResponseEntity.ok().body(produtoMercadoConverter.toDTO(produtoMercadoDAO.getUniqueProdutos()));
+
+    }
+
+    @GetMapping("/grupo/{id_grupo}")
+    public ResponseEntity<List<Produto_MercadoDTO>> getProdutosPorGrupo(@PathVariable String id_grupo) throws SQLException {
+
+        return ResponseEntity.ok().body(produtoMercadoDAO.getProdutosPorGrupo(id_grupo));
+    }
+
+    @PostMapping("/gpt/")
+    public ResponseEntity<String> sentGPT() throws SQLException {
         int loteSize = 25;
 
         // Obtenha o total de produtos do banco de dados
@@ -73,40 +100,13 @@ public class Produto_MercadoController {
             //response = "{\"choices\": []}";
 
             // Processa a resposta da API
-            List<ProdutoDTO> novosProdutos = criaGruposProdutosDaAPI(response);
+            criaGruposProdutosDaAPI(response);
         }
 
-        return response;
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @GetMapping
-    public List<Produto_MercadoDTO> getProdutos() throws SQLException {
-
-        return produtoMercadoConverter.toDTO(produtoMercadoDAO.getAll());
-
-    }
-
-//    @GetMapping("/autocomplete/")
-//    public List<Produto_MercadoDTO> autocomplete(@RequestParam String searchTerm) throws SQLException {
-//        return produtoMercadoDAO.autocomplete(searchTerm);
-//    }
-
-    @GetMapping("/produtos/")
-    public List<Produto_MercadoDTO> getUniqueProdutos() throws SQLException {
-
-        return produtoMercadoConverter.toDTO(produtoMercadoDAO.getUniqueProdutos());
-    }
-
-
-    @GetMapping("/grupo/{id_grupo}")
-    public List<Produto_MercadoDTO> getProdutosPorGrupo(@PathVariable String id_grupo) throws SQLException {
-        List<Produto_MercadoDTO> grupo2 = produtoMercadoDAO.getProdutosPorGrupo(id_grupo);
-        return grupo2;
-    }
-
-
-
-    private String criarPromptListaProduto(List<Produto_MercadoDTO> produtos) {
+    public String criarPromptListaProduto(List<Produto_MercadoDTO> produtos) {
         StringBuilder promptListaProduto = new StringBuilder();
         for (Produto_MercadoDTO produto : produtos) {
             promptListaProduto.append("\\n").append("id_produto: ").append(produto.id_produto_mercado).append(", nome: ").append(produto.nome);
@@ -114,8 +114,7 @@ public class Produto_MercadoController {
         return promptListaProduto.toString();
     }
 
-    private List<ProdutoDTO> criaGruposProdutosDaAPI(String response) {
-        List<ProdutoDTO> novoGrupoProdutoMercado = new ArrayList<>();
+    public void criaGruposProdutosDaAPI(String response) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode rootNode = mapper.readTree(response);
@@ -132,8 +131,7 @@ public class Produto_MercadoController {
                     ProdutoConverter produtoConverter = new ProdutoConverter();
                     ProdutoEntity entity = produtoConverter.toEntity(novoProduto);
                     ProdutoDAO produtoDAO = new ProdutoDAO();
-                    produtoDAO.insertGrupo(entity);
-                    novoGrupoProdutoMercado.add(novoProduto);
+                    produtoDAO.addGrupo(entity);
                     System.out.println("novoProduto" + novoProduto);
                     atualizaIdProdutoDoGrupo(grupo, novoProduto);
                 }
@@ -141,9 +139,7 @@ public class Produto_MercadoController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return novoGrupoProdutoMercado;
     }
-
 
     private ProdutoDTO criaGrupoProdutosDoMercado(JsonNode grupo) throws SQLException {
         ProdutoDTO novoGrupoProdutoMercado = new ProdutoDTO();
