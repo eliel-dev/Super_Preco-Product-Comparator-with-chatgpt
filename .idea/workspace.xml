@@ -31,7 +31,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -60,7 +60,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "settings.json.schema",
+    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -108,6 +108,10 @@
       <workItem from="1700411066793" duration="84000" />
       <workItem from="1700411156987" duration="58000" />
       <workItem from="1700411222605" duration="2660000" />
+      <workItem from="1700494837189" duration="57000" />
+      <workItem from="1700494904085" duration="1156000" />
+      <workItem from="1700496758331" duration="67000" />
+      <workItem from="1700496832079" duration="3956000" />
     </task>
     <servers />
   </component>

@@ -22,6 +22,12 @@ public class Produto_MercadoEntity {
         this.link_img = link_img;
     }
 
+    public Produto_MercadoEntity(int id_produto_mercado, MercadoEntity id_mercado, String nome) {
+        this.id_produto_mercado = id_produto_mercado;
+        this.id_mercado = id_mercado;
+        this.nome = nome;
+    }
+
     public Produto_MercadoEntity() {
     }
 
