@@ -4,78 +4,67 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f13b64d3-015c-4b12-bd94-d6691503291d" name="Changes" comment="" />
+    <list default="true" id="9cc13aa5-a7d2-428b-8e6c-e0ad182addd0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/ConnectionSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/ConnectionSingleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ProdutoConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ProdutoConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto_mercado/ChatGPT.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ChatGPT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto_mercado/CooperScrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/CooperScrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto_mercado/KochScrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/KochScrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto_mercado/Produto_MercadoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ProdutoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto_mercado/Produto_MercadoConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto_mercado/Produto_MercadoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/Produto_MercadoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto_mercado/Produto_MercadoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto/Produto_MercadoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto_mercado/Produto_MercadoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto/Produto_MercadoEntity.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LogFilters">
-    <option name="FILTER_ERRORS" value="false" />
-    <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
-    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
-  </component>
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 6
 }</component>
-  <component name="ProjectId" id="2YMNOsIFLQDGebvtmIuRacFKpEG" />
+  <component name="ProjectId" id="2YSSMBBHBemqeJmDqAe0ttLb1Sr" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "settings.json.schema",
-    "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
-    ]
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Spring Boot.SuperPrecoApplication">
-    <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="generated-requests | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="2" requestIdentifier="#2" runType="Run single request">
-      <method v="2" />
-    </configuration>
+}</component>
+  <component name="RunManager">
     <configuration name="SuperPrecoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="super_preco" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cedup.super_preco.SuperPrecoApplication" />
@@ -83,50 +72,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="HTTP Request.generated-requests | #2" />
-        <item itemvalue="HTTP Request.generated-requests | #1" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f13b64d3-015c-4b12-bd94-d6691503291d" name="Changes" comment="" />
-      <created>1700331460102</created>
+      <changelist id="9cc13aa5-a7d2-428b-8e6c-e0ad182addd0" name="Changes" comment="" />
+      <created>1700517439724</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1700331460102</updated>
-      <workItem from="1700331461251" duration="97000" />
-      <workItem from="1700332302937" duration="56000" />
-      <workItem from="1700332385849" duration="20361000" />
-      <workItem from="1700410464565" duration="98000" />
-      <workItem from="1700410639203" duration="204000" />
-      <workItem from="1700410854421" duration="181000" />
-      <workItem from="1700411042627" duration="18000" />
-      <workItem from="1700411066793" duration="84000" />
-      <workItem from="1700411156987" duration="58000" />
-      <workItem from="1700411222605" duration="2660000" />
+      <updated>1700517439724</updated>
+      <workItem from="1700517442383" duration="1437000" />
+      <workItem from="1700522153533" duration="700000" />
+      <workItem from="1700605650755" duration="3048000" />
+      <workItem from="1700612787004" duration="203000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

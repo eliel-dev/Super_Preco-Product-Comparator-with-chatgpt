@@ -20,7 +20,7 @@ public class ConnectionSingleton {
             connection = DriverManager.getConnection( //
                     "jdbc:mysql://:3306/super_preco", //
                     "root", //
-                    "root");
+                    "");
         }
         return connection;
     }

@@ -1,11 +1,9 @@
-package com.cedup.super_preco.controller.produto_mercado;
+package com.cedup.super_preco.controller.produto;
 
-import com.cedup.super_preco.controller.produto.ProdutoConverter;
-import com.cedup.super_preco.controller.produto.ProdutoDTO;
 import com.cedup.super_preco.model.produto.ProdutoDAO;
 import com.cedup.super_preco.model.produto.ProdutoEntity;
-import com.cedup.super_preco.model.produto_mercado.Produto_MercadoDAO;
-import com.cedup.super_preco.model.produto_mercado.Produto_MercadoEntity;
+import com.cedup.super_preco.model.produto.Produto_MercadoDAO;
+import com.cedup.super_preco.model.produto.Produto_MercadoEntity;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/produto/")
 @CrossOrigin(origins = "*")
-public class Produto_MercadoController {
+public class ProdutoController {
     @Autowired
     Produto_MercadoDAO produtoMercadoDAO;
     @Autowired
@@ -31,7 +29,7 @@ public class Produto_MercadoController {
     @Autowired
     ChatGPT chatGPT;
     @Autowired
-    Produto_MercadoConverter produtoMercadoConverter;
+    ProdutoConverter produtoConverter;
 
 
     @PostMapping ("/scraping/")
@@ -55,7 +53,7 @@ public class Produto_MercadoController {
     @GetMapping
     public ResponseEntity<List<Produto_MercadoDTO>> getProdutos() throws SQLException {
 
-        return ResponseEntity.ok().body(produtoMercadoConverter.toDTO(produtoMercadoDAO.getAll()));
+        return ResponseEntity.ok().body(produtoConverter.toDTO(produtoMercadoDAO.getAll()));
 
     }
 
@@ -67,7 +65,7 @@ public class Produto_MercadoController {
     @GetMapping("/produtos/")
     public ResponseEntity<List<Produto_MercadoDTO>> getUniqueProdutos() throws SQLException {
 
-        return ResponseEntity.ok().body(produtoMercadoConverter.toDTO(produtoMercadoDAO.getUniqueProdutos()));
+        return ResponseEntity.ok().body(produtoConverter.toDTO(produtoMercadoDAO.getUniqueProdutos()));
 
     }
 

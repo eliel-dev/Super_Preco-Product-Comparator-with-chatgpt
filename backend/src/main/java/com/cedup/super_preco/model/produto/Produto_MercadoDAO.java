@@ -1,9 +1,8 @@
-package com.cedup.super_preco.model.produto_mercado;
+package com.cedup.super_preco.model.produto;
 
 import com.cedup.super_preco.ConnectionSingleton;
-import com.cedup.super_preco.controller.produto_mercado.Produto_MercadoDTO;
+import com.cedup.super_preco.controller.produto.Produto_MercadoDTO;
 import com.cedup.super_preco.model.mercado.MercadoEntity;
-import com.cedup.super_preco.model.produto.ProdutoEntity;
 import org.springframework.stereotype.Component;
 
 import java.sql.PreparedStatement;

@@ -1,4 +1,4 @@
-package com.cedup.super_preco.model.produto_mercado;
+package com.cedup.super_preco.model.produto;
 
 import com.cedup.super_preco.model.mercado.MercadoEntity;
 import com.cedup.super_preco.model.produto.ProdutoEntity;

@@ -1,4 +1,4 @@
-package com.cedup.super_preco.controller.produto_mercado;
+package com.cedup.super_preco.controller.produto;
 
 
 public class Produto_MercadoDTO {

@@ -1,8 +1,8 @@
-package com.cedup.super_preco.controller.produto_mercado;
+package com.cedup.super_preco.controller.produto;
 
 import com.cedup.super_preco.model.mercado.MercadoEntity;
 import com.cedup.super_preco.model.produto.ProdutoEntity;
-import com.cedup.super_preco.model.produto_mercado.Produto_MercadoEntity;
+import com.cedup.super_preco.model.produto.Produto_MercadoEntity;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
