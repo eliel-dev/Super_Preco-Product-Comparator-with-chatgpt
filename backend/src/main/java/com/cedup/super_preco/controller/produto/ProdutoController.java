@@ -70,9 +70,9 @@ public class ProdutoController {
     }
 
     @GetMapping("/grupo/{id_grupo}")
-    public ResponseEntity<List<Produto_MercadoDTO>> getProdutosPorGrupo(@PathVariable String id_grupo) throws SQLException {
+    public ResponseEntity<List<Produto_MercadoDTO>> getProdutosPorGrupo(@PathVariable ProdutoEntity id_grupo) throws SQLException {
 
-        return ResponseEntity.ok().body(produtoMercadoDAO.getProdutosPorGrupo(id_grupo));
+        return ResponseEntity.ok().body(produtoMercadoConverter.toDTO(produtoMercadoDAO.getProdutosPorGrupo(id_grupo)) );
     }
 
     @PostMapping("/gpt/")
@@ -85,7 +85,7 @@ public class ProdutoController {
 
         for (int i = 0; i < totalProdutos; i += loteSize) {
             // Obtenha o lote de produtos do banco de dados usando LIMIT e OFFSET
-            List<Produto_MercadoDTO> loteProdutos = produtoMercadoDAO.getByMercado(loteSize, i);
+            List<Produto_MercadoEntity> loteProdutos = produtoMercadoDAO.getByMercado(loteSize, i);
             System.out.println("loteProdutos" + loteProdutos);
 
             // Cria o prompt para a API da OpenAI com o lote de produtos
@@ -104,9 +104,9 @@ public class ProdutoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    public String criarPromptListaProduto(List<Produto_MercadoDTO> produtos) {
+    public String criarPromptListaProduto(List<Produto_MercadoEntity> produtos) {
         StringBuilder promptListaProduto = new StringBuilder();
-        for (Produto_MercadoDTO produto : produtos) {
+        for (Produto_MercadoEntity produto : produtos) {
             promptListaProduto.append("\\n").append("id_produto: ").append(produto.id_produto_mercado).append(", nome: ").append(produto.nome);
         }
         return promptListaProduto.toString();
@@ -146,7 +146,7 @@ public class ProdutoController {
         JsonNode idProdutos = grupo.get("id_produto");
         if (idProdutos != null && idProdutos.isArray() && !idProdutos.isEmpty()) {
             int idPrimeiroProduto = idProdutos.get(0).asInt();
-            Produto_MercadoDTO produto = produtoMercadoDAO.getProduto(idPrimeiroProduto);
+            Produto_MercadoDTO produto = produtoMercadoConverter.toDTO(produtoMercadoDAO.getProduto(idPrimeiroProduto));
             if (produto != null && produto.nome != null) {
                 novoGrupoProdutoMercado.setNome(produto.nome);
             }
