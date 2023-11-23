@@ -17,7 +17,7 @@ import java.util.List;
 @Component
 public class CooperScrapper {
 
-    public List<Produto_MercadoEntity> scrapeProducts () {
+    public List<Produto_MercadoEntity> scrapeProducts() {
         List<Produto_MercadoEntity> produtos = new ArrayList<>();
         try {
             // para contar o total de produtos que vão ser raspados
@@ -75,7 +75,7 @@ public class CooperScrapper {
                         productFinalPrice = productFinalPrice.replace(',', '.');
                         // Converter para double
                         double priceDouble = Double.parseDouble(productFinalPrice);
-                        String productImageLink =  "https:" + product.parent().selectFirst(".product-variation__image-container img").attr("src");
+                        String productImageLink = "https:" + product.parent().selectFirst(".product-variation__image-container img").attr("src");
 
                         // cria uma nova instância de Produto_MercadoDTO
                         Produto_MercadoEntity productInfo = new Produto_MercadoEntity(0, new MercadoEntity(1), new ProdutoEntity("0"), productName, priceDouble, productHref, productImageLink);

@@ -10,15 +10,21 @@ import java.util.stream.Collectors;
 @Component
 public class ProdutoConverter {
 
-    public ProdutoEntity toEntity(ProdutoDTO dto){
+    public ProdutoEntity toEntity(ProdutoDTO dto) {
         return new ProdutoEntity(dto.id, dto.nome);
     }
 
-    public List<Produto_MercadoDTO> toDTO(List<Produto_MercadoEntity> entities){
+    public List<Produto_MercadoDTO> toDTO(List<Produto_MercadoEntity> entities) {
 
         return entities //
                 .stream() //
                 .map(entity -> new Produto_MercadoDTO(entity.id_produto_mercado, entity.id_mercado.id_mercado, entity.id_produto.id_produto, entity.nome, entity.preco, entity.link, entity.link_img)) //
                 .collect(Collectors.toList());
     }
+
+    public Produto_MercadoDTO toDTO(Produto_MercadoEntity entity) {
+        return new Produto_MercadoDTO(entity.id_produto_mercado, entity.id_mercado.id_mercado, entity.id_produto.id_produto, entity.nome, entity.preco, entity.link, entity.link_img);
+    }
+
+
 }

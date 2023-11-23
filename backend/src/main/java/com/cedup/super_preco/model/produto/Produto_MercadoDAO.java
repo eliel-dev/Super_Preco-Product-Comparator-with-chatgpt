@@ -19,7 +19,7 @@ public class Produto_MercadoDAO {
 
         String sql = "SELECT * FROM produto_mercado";
         try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql);
-                ResultSet rs = stmt.executeQuery()) {
+             ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 int id_produto_mercado = rs.getInt("id_produto_mercado");
                 MercadoEntity id_mercado = new MercadoEntity(rs.getInt("id_mercado"));
@@ -64,7 +64,7 @@ public class Produto_MercadoDAO {
 
         String sql = "SELECT pm.* FROM produto_mercado pm INNER JOIN (SELECT id_produto, MIN(id_produto_mercado) as id_produto_mercado FROM produto_mercado GROUP BY id_produto) subquery ON pm.id_produto = subquery.id_produto AND pm.id_produto_mercado = subquery.id_produto_mercado";
         try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql);
-                ResultSet rs = stmt.executeQuery()) {
+             ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 int id_produto_mercado = rs.getInt("id_produto_mercado");
                 MercadoEntity id_mercado = new MercadoEntity(rs.getInt("id_mercado"));

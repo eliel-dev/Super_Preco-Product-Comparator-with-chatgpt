@@ -104,7 +104,7 @@ public class KochScrapper {
                     // Incrementando o número da página para a próxima iteração
                     pageNumber++;
                 }
-                System.out.println("Número de produtos raspados para a categoria " + categoryPath+ ": " + productCount);
+                System.out.println("Número de produtos raspados para a categoria " + categoryPath + ": " + productCount);
             }
             // Imprimindo o número total de produtos raspados
             System.out.println("Total de produtos raspados: " + totalProductCount);

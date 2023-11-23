@@ -10,6 +10,7 @@ public class ConnectionSingleton {
     private ConnectionSingleton() {
         // Singleton class
     }
+
     /**
      * Obtém a conexão ativa com o banco.
      * Caso não exista nenhuma conexão ativa ainda, cria uma nova.
@@ -20,7 +21,7 @@ public class ConnectionSingleton {
             connection = DriverManager.getConnection( //
                     "jdbc:mysql://:3306/super_preco", //
                     "root", //
-                    "");
+                    "root");
         }
         return connection;
     }
