@@ -37,7 +37,7 @@ if (id_produto) {
                         document.getElementById('nome_produto').innerText = produto.nome;
                     }
                 }
-                // cria um div e defini uma classe para el
+                // cria um div e define uma classe para ele
                 let col = document.createElement('div');
                 col.className = "col-sm-4 mb-3";
                 col.innerHTML = `
