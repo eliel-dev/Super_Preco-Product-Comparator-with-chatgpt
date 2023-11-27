@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Component
 public class KochScrapper {
@@ -83,11 +85,22 @@ public class KochScrapper {
                         // imagem em baixa resolução/otimizada
                         String productImageLink = product.parent().selectFirst(".product-image-photo").attr("src");
 
+                        // Extrair o volume do nome do produto
+                        ArrayList<String> productVolumes = getVolumes(productName);
+
+                        String productVolume = "";
+                        // Verifique se obtivemos algum volume
+                        if (!productVolumes.isEmpty()) {
+                            // Use o primeiro volume como o volume do produto
+                            productVolume = productVolumes.get(0);
+                        }
+
                         // cria nova instância de Produto_MercadoDTO
-                        Produto_MercadoEntity productInfo = new Produto_MercadoEntity(0, new MercadoEntity(2), new ProdutoEntity("0"), productName, priceDouble, productHref, productImageLink);
+                        Produto_MercadoEntity productInfo = new Produto_MercadoEntity(0, new MercadoEntity(2), new ProdutoEntity("0"), productName, priceDouble,productVolume, productHref, productImageLink);
                         // adiciona o produto à lista 'produto"
                         produtos.add(productInfo);
 
+                        System.out.println("Volume do Produto: " + productVolume);
                         System.out.println("Nome do produto: " + productName);
                         System.out.println("Href do produto: " + productHref);
                         System.out.println("Preço final do produto: " + productPrice);
@@ -112,5 +125,21 @@ public class KochScrapper {
             throw new RuntimeException(e);
         }
         return produtos;
+    }
+
+    public ArrayList<String> getVolumes(String product){
+        // Criando uma lista vazia para armazenar os volumes
+        ArrayList<String> volumes = new ArrayList<>();
+
+        // Padrão de regex para encontrar a medida do volume
+        Pattern p = Pattern.compile("\\d+(,|\\.)?\\d*(ml|l|g|kg|litros)", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(product);
+
+        // Se uma correspondência for encontrada, adicione-a à nossa lista de volumes
+        while(m.find()){
+            volumes.add(m.group());
+        }
+        // Retornar a lista de volumes
+        return volumes;
     }
 }

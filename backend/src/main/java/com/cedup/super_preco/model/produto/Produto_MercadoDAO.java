@@ -1,7 +1,6 @@
 package com.cedup.super_preco.model.produto;
 
 import com.cedup.super_preco.ConnectionSingleton;
-import com.cedup.super_preco.controller.produto.Produto_MercadoDTO;
 import com.cedup.super_preco.model.mercado.MercadoEntity;
 import org.springframework.stereotype.Component;
 
@@ -26,14 +25,16 @@ public class Produto_MercadoDAO {
                 ProdutoEntity id_produto = new ProdutoEntity(rs.getString("id_produto"));
                 String nome = rs.getString("nome");
                 double preco = rs.getDouble("preco");
+                String volume = rs.getString("volume");
                 String link = rs.getString("link");
                 String link_img = rs.getString("link_img");
-                produtos.add(new Produto_MercadoEntity(id_produto_mercado, id_mercado, id_produto, nome, preco, link,
+                produtos.add(new Produto_MercadoEntity(id_produto_mercado, id_mercado, id_produto, nome, preco, volume, link,
                         link_img));
             }
             return produtos;
         }
     }
+
 
     // public List<Produto_MercadoDTO> autocomplete(String searchTerm) throws
     // SQLException {
@@ -71,9 +72,10 @@ public class Produto_MercadoDAO {
                 ProdutoEntity id_produto = new ProdutoEntity(rs.getString("id_produto"));
                 String nome = rs.getString("nome");
                 double preco = rs.getDouble("preco");
+                String volume = rs.getString("volume");
                 String link = rs.getString("link");
                 String link_img = rs.getString("link_img");
-                produtos.add(new Produto_MercadoEntity(id_produto_mercado, id_mercado, id_produto, nome, preco, link,
+                produtos.add(new Produto_MercadoEntity(id_produto_mercado, id_mercado, id_produto, nome, preco, volume, link,
                         link_img));
             }
         }
@@ -83,7 +85,7 @@ public class Produto_MercadoDAO {
     public List<Produto_MercadoEntity> getByMercado(int limit, int offset) throws SQLException {
         List<Produto_MercadoEntity> produtos = new ArrayList<>();
 
-        String sql = "SELECT id_produto_mercado, id_mercado, nome FROM produto_mercado ORDER BY nome LIMIT ? OFFSET ?";
+        String sql = "SELECT id_produto_mercado, id_mercado, nome, volume FROM produto_mercado ORDER BY volume LIMIT ? OFFSET ?";
         try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
             stmt.setInt(1, limit);
             stmt.setInt(2, offset);
@@ -92,11 +94,13 @@ public class Produto_MercadoDAO {
                 int id_produto_mercado = rs.getInt("id_produto_mercado");
                 MercadoEntity id_mercado = new MercadoEntity(rs.getInt("id_mercado"));
                 String nome = rs.getString("nome");
-                produtos.add(new Produto_MercadoEntity(id_produto_mercado, id_mercado, nome));
+                String volume = rs.getString("volume");
+                produtos.add(new Produto_MercadoEntity(id_produto_mercado, id_mercado, nome, volume));
                 // System.out.println(nome);
             }
             System.out.println("limit: " + limit);
             System.out.println("offset: " + offset);
+            System.out.println("_____________________________________________________________________");
         }
         return produtos;
     }
@@ -126,9 +130,10 @@ public class Produto_MercadoDAO {
                     ProdutoEntity id_produto = new ProdutoEntity(rs.getString("id_produto"));
                     String nome = rs.getString("nome");
                     double preco = rs.getDouble("preco");
+                    String volume = rs.getString("volume");
                     String link = rs.getString("link");
                     String link_img = rs.getString("link_img");
-                    produto = new Produto_MercadoEntity(id_produto_mercado, id_mercado, id_produto, nome, preco, link, link_img);
+                    produto = new Produto_MercadoEntity(id_produto_mercado, id_mercado, id_produto, nome, preco, volume, link, link_img);
                 }
             }
             return produto;
@@ -147,9 +152,10 @@ public class Produto_MercadoDAO {
                     MercadoEntity id_mercado = new MercadoEntity(rs.getInt("id_mercado"));
                     String nome = rs.getString("nome");
                     double preco = rs.getDouble("preco");
+                    String volume = rs.getString("volume");
                     String link = rs.getString("link");
                     String link_img = rs.getString("link_img");
-                    produtos.add(new Produto_MercadoEntity(id_produto_mercado, id_mercado, entity, nome, preco, link,
+                    produtos.add(new Produto_MercadoEntity(id_produto_mercado, id_mercado, entity, nome, preco, volume, link,
                             link_img));
                 }
             }
@@ -158,7 +164,7 @@ public class Produto_MercadoDAO {
     }
 
     public void addProduto(Produto_MercadoEntity produto) throws SQLException {
-        String sql = "INSERT INTO produto_mercado (id_mercado, id_produto, nome, preco, link, link_img) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO produto_mercado (id_mercado, id_produto, nome, preco, volume, link, link_img) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql,
                 Statement.RETURN_GENERATED_KEYS)) {
@@ -166,8 +172,9 @@ public class Produto_MercadoDAO {
             stmt.setString(2, produto.id_produto.id_produto);
             stmt.setString(3, produto.nome);
             stmt.setDouble(4, produto.preco);
-            stmt.setString(5, produto.link);
-            stmt.setString(6, produto.link_img);
+            stmt.setString(5, produto.volume);
+            stmt.setString(6, produto.link);
+            stmt.setString(7, produto.link_img);
 
             stmt.executeUpdate();
 

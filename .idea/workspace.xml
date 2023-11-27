@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cc13aa5-a7d2-428b-8e6c-e0ad182addd0" name="Changes" comment="" />
+    <list default="true" id="9cc13aa5-a7d2-428b-8e6c-e0ad182addd0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ChatGPT.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ChatGPT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/CooperScrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/CooperScrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/KochScrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/KochScrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ProdutoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ProdutoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ProdutoConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ProdutoConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/Produto_MercadoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/Produto_MercadoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto/Produto_MercadoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto/Produto_MercadoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto/Produto_MercadoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto/Produto_MercadoEntity.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,27 +46,27 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.idesettings.quicklists",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.AIAssistantPromptsLibrary&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="SuperPrecoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="super_preco" />
@@ -83,12 +93,19 @@
       <workItem from="1700761707082" duration="317000" />
       <workItem from="1700762033040" duration="3462000" />
       <workItem from="1700769858135" duration="1654000" />
-      <workItem from="1700771542085" duration="369000" />
+      <workItem from="1700771542085" duration="17581000" />
+      <workItem from="1701012373280" duration="1926000" />
+      <workItem from="1701014307184" duration="5026000" />
+      <workItem from="1701092229314" duration="435000" />
+      <workItem from="1701097197514" duration="6172000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

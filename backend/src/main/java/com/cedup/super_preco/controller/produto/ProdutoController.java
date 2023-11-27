@@ -12,9 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/produto/")
@@ -45,12 +45,13 @@ public class ProdutoController {
         allProdutos.addAll(produtosCooper);
         allProdutos.addAll(produtosKoch);
 
-        // Passa cada produto da lista combinada para o método addProduto() do seu DAO
+        // Passa cada produto da lista combinada para o método addProduto()
         for (Produto_MercadoEntity produtoEntity : allProdutos) {
             produtoMercadoDAO.addProduto(produtoEntity);
         }
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
 
     @GetMapping
     public ResponseEntity<List<Produto_MercadoDTO>> getProdutos() throws SQLException {
@@ -79,7 +80,7 @@ public class ProdutoController {
 
     @PostMapping("/gpt/")
     public ResponseEntity<String> sentGPT() throws SQLException {
-        int loteSize = 25;
+        int loteSize = 50;
 
         // Obtenha o total de produtos do banco de dados
         int totalProdutos = produtoMercadoDAO.getTotalProdutos();
@@ -88,7 +89,6 @@ public class ProdutoController {
         for (int i = 0; i < totalProdutos; i += loteSize) {
             // Obtenha o lote de produtos do banco de dados usando LIMIT e OFFSET
             List<Produto_MercadoEntity> loteProdutos = produtoMercadoDAO.getByMercado(loteSize, i);
-            System.out.println("loteProdutos" + loteProdutos);
 
             // Cria o prompt para a API da OpenAI com o lote de produtos
             String promptListaProduto = criarPromptListaProduto(loteProdutos);
@@ -109,7 +109,21 @@ public class ProdutoController {
     public String criarPromptListaProduto(List<Produto_MercadoEntity> produtos) {
         StringBuilder promptListaProduto = new StringBuilder();
         for (Produto_MercadoEntity produto : produtos) {
-            promptListaProduto.append("\\n").append("id_produto: ").append(produto.id_produto_mercado).append(", nome: ").append(produto.nome);
+            String nomeProduto = produto.nome.toLowerCase().replace(produto.volume.toLowerCase(), ""); // remove o volume do nome do produto
+
+            promptListaProduto.append("\\n")
+                    .append("id_produto: ")
+                    .append(produto.id_produto_mercado)
+                    .append(", nome: ")
+                    .append(nomeProduto.trim()) // adicionado trim() para remover espaços em branco que podem ter sido deixados após a remoção do volume
+                    .append(", volume: ")
+                    .append(produto.volume);
+
+//            System.out.println(nomeProduto.trim()); // adicionado trim() aqui também
+//            System.out.println(" Volume: " + produto.volume);
+              System.out.println("ID produto: " + produto.id_produto_mercado);
+
+
         }
         return promptListaProduto.toString();
     }
@@ -162,4 +176,5 @@ public class ProdutoController {
             }
         }
     }
+
 }
