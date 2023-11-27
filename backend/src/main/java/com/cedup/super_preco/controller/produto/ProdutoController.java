@@ -60,10 +60,10 @@ public class ProdutoController {
 
     }
 
-//    @GetMapping("/autocomplete/")
-//    public List<Produto_MercadoDTO> autocomplete(@RequestParam String searchTerm) throws SQLException {
-//        return produtoMercadoDAO.autocomplete(searchTerm);
-//    }
+    @GetMapping("/autocomplete/")
+    public ResponseEntity<List<Produto_MercadoDTO>> autocomplete(@RequestParam String searchTerm) throws SQLException {
+        return ResponseEntity.ok().body(produtoConverter.toDTO(produtoMercadoDAO.autocomplete(searchTerm)));
+    }
 
     @GetMapping("/produtos/")
     public ResponseEntity<List<Produto_MercadoDTO>> getUniqueProdutos() throws SQLException {

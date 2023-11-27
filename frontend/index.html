@@ -50,10 +50,10 @@
     <section id="lista-de-ofertas" class="py-5 bg-light">
         <div class="d-flex">
             <div class="form-container">
-                <input id="botao-pesquisar" class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                <input id="campo-pesquisa" class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
                 <ul id="lista-sugestoes"></ul>
             </div>
-            <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+            <button class="btn btn-outline-success" type="submit" onclick="carregarProdutosPorPesquisa(document.getElementById('campo-pesquisa').value)">Pesquisar</button>
         </div>
         <div class="container px-4 px-lg-5 mt-5">
             <!-- "row = linha horizontal" // "cols-1 = colunas de largura total " // "g-4 = espaçamento entre as colunas"-->

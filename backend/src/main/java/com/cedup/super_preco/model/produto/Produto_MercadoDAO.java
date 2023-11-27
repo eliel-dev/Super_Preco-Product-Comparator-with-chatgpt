@@ -35,35 +35,50 @@ public class Produto_MercadoDAO {
         }
     }
 
+    public List<Produto_MercadoEntity> autocomplete(String searchTerm) throws SQLException {
+        List<Produto_MercadoEntity> produtos = new ArrayList<>();
 
-    // public List<Produto_MercadoDTO> autocomplete(String searchTerm) throws
-    // SQLException {
-    // List<Produto_MercadoDTO> produtos = new ArrayList<>();
-    //
-    // String sql = "SELECT * FROM produto_mercado WHERE nome LIKE ?";
-    // try (PreparedStatement stmt =
-    // ConnectionSingleton.getConnection().prepareStatement(sql)) {
-    // stmt.setString(1, "%" + searchTerm + "%");
-    // ResultSet rs = stmt.executeQuery();
-    // while (rs.next()) {
-    // int id_produto_mercado = rs.getInt("id_produto_mercado");
-    // int id_mercado = rs.getInt("id_mercado");
-    // String id_produto = rs.getString("id_produto");
-    // String nome = rs.getString("nome");
-    // double preco = rs.getDouble("preco");
-    // String link = rs.getString("link");
-    // String link_img = rs.getString("link_img");
-    // produtos.add(new Produto_MercadoDTO(id_produto_mercado, id_mercado,
-    // id_produto, nome, preco, link, link_img));
-    // }
-    // }
-    // return produtos;
-    // }
+        String sql = "SELECT pm.* " +
+                "FROM produto_mercado pm " +
+                "INNER JOIN " +
+                "(SELECT id_produto, MIN(id_produto_mercado) as id_produto_mercado " +
+                "FROM produto_mercado " +
+                "GROUP BY id_produto) subquery " +
+                "ON pm.id_produto = subquery.id_produto " +
+                "AND pm.id_produto_mercado = subquery.id_produto_mercado " +
+                "WHERE pm.nome LIKE ?";
+
+        try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
+            stmt.setString(1, "%" + searchTerm + "%");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id_produto_mercado = rs.getInt("id_produto_mercado");
+                MercadoEntity id_mercado = new MercadoEntity(rs.getInt("id_mercado"));
+                ProdutoEntity id_produto = new ProdutoEntity(rs.getString("id_produto"));
+                String nome = rs.getString("nome");
+                double preco = rs.getDouble("preco");
+                String volume = rs.getString("volume");
+                String link = rs.getString("link");
+                String link_img = rs.getString("link_img");
+                produtos.add(new Produto_MercadoEntity(id_produto_mercado, id_mercado,
+                        id_produto, nome, preco, volume, link, link_img));
+            }
+        }
+        return produtos;
+    }
 
     public List<Produto_MercadoEntity> getUniqueProdutos() throws SQLException {
         List<Produto_MercadoEntity> produtos = new ArrayList<>();
 
-        String sql = "SELECT pm.* FROM produto_mercado pm INNER JOIN (SELECT id_produto, MIN(id_produto_mercado) as id_produto_mercado FROM produto_mercado GROUP BY id_produto) subquery ON pm.id_produto = subquery.id_produto AND pm.id_produto_mercado = subquery.id_produto_mercado";
+        String sql = "SELECT pm.* " +
+                "FROM produto_mercado pm " +
+                "INNER JOIN " +
+                "(SELECT id_produto, MIN(id_produto_mercado) as id_produto_mercado " +
+                "FROM produto_mercado " +
+                "GROUP BY id_produto) subquery " +
+                "ON pm.id_produto = subquery.id_produto " +
+                "AND pm.id_produto_mercado = subquery.id_produto_mercado ";
+
         try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {

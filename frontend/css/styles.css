@@ -1264,7 +1264,7 @@ progress {
 
   h2#nome_produto {
     padding-bottom: 3.2rem;
-}
+  }
 
   .col-md-7 {
     flex: 0 0 auto;
@@ -4779,7 +4779,7 @@ fieldset:disabled .btn {
   --bs-card-title-spacer-y: 0.5rem;
   --bs-card-border-width: 1px;
   --bs-card-border-color: var(
---bs-border-color-translucent);
+          --bs-border-color-translucent);
   --bs-card-border-radius: 0.375rem;
   --bs-card-box-shadow: ;
   --bs-card-inner-border-radius: calc(0.375rem - 1px);
@@ -5166,8 +5166,8 @@ h5.card-title2 {
   padding-right: var(--bs-breadcrumb-item-padding-x);
   color: var(--bs-breadcrumb-divider-color);
   content: var(--bs-breadcrumb-divider, "/")
-    /* rtl: var(--bs-breadcrumb-divider, "/") */
-  ;
+  /* rtl: var(--bs-breadcrumb-divider, "/") */
+;
 }
 
 .breadcrumb-item.active {
@@ -6895,8 +6895,8 @@ h2.container.px-4.px-lg-5.mt-5 {
 @keyframes spinner-border {
   to {
     transform: rotate(360deg)
-      /* rtl:ignore */
-    ;
+    /* rtl:ignore */
+  ;
   }
 }
 
@@ -12658,7 +12658,7 @@ section#lista-de-ofertas {
 @font-face {
   font-family: "bootstrap-icons";
   src: url("./fonts/bootstrap-icons.woff2?856008caa5eb66df68595e734e59580d") format("woff2"),
-url("./fonts/bootstrap-icons.woff?856008caa5eb66df68595e734e59580d") format("woff");
+  url("./fonts/bootstrap-icons.woff?856008caa5eb66df68595e734e59580d") format("woff");
 }
 
 [class^="bi-"]::before,
@@ -14134,7 +14134,7 @@ url("./fonts/bootstrap-icons.woff?856008caa5eb66df68595e734e59580d") format("wof
 #lista-sugestoes li {
   padding: 10px;
   cursor: pointer;
-  //width: 900px;
+//width: 900px;
   height: auto;
 }
 #lista-sugestoes li:hover {

@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cc13aa5-a7d2-428b-8e6c-e0ad182addd0" name="Changes" comment="">
+    <list default="true" id="9cc13aa5-a7d2-428b-8e6c-e0ad182addd0" name="Changes" comment="Adicionado volume do produto como um atributo separado e aprimorada a extração de volume com RegEx.&#10;O volume do produto foi separado do nome do produto e inserido como um atributo distinto, tanto nas classes de entidade quanto nas classes DTO. Essa mudança atende ao mais recente pedido para tratar o volume como um atributo independente do produto. Em correlação, o padrão RegEx foi refinado para extrair de maneira eficaz a medida de volume da string do nome do produto.">
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ChatGPT.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ChatGPT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/CooperScrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/CooperScrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/KochScrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/KochScrapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ProdutoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ProdutoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ProdutoConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ProdutoConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/Produto_MercadoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/Produto_MercadoDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto/Produto_MercadoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto/Produto_MercadoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto/Produto_MercadoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto/Produto_MercadoEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/js/produtos_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/js/produtos_api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +64,10 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.SuperPrecoApplication">
+    <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="SuperPrecoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="super_preco" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cedup.super_preco.SuperPrecoApplication" />
@@ -75,6 +75,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.generated-requests | #3" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -97,15 +102,26 @@
       <workItem from="1701012373280" duration="1926000" />
       <workItem from="1701014307184" duration="5026000" />
       <workItem from="1701092229314" duration="435000" />
-      <workItem from="1701097197514" duration="6172000" />
+      <workItem from="1701097197514" duration="12429000" />
     </task>
+    <task id="LOCAL-00001" summary="Adicionado volume do produto como um atributo separado e aprimorada a extração de volume com RegEx.&#10;O volume do produto foi separado do nome do produto e inserido como um atributo distinto, tanto nas classes de entidade quanto nas classes DTO. Essa mudança atende ao mais recente pedido para tratar o volume como um atributo independente do produto. Em correlação, o padrão RegEx foi refinado para extrair de maneira eficaz a medida de volume da string do nome do produto.">
+      <option name="closed" value="true" />
+      <created>1701106774274</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1701106774274</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="Add volume attribute to products and improve RegEx pattern for volume extraction&#10;&#10;Product volume was got separated from the product name and added as a separate attribute both in entity and DTO classes. This is in alignment with the new requirement to treat volume as a separate attribute of a product. To achieve this, Regex pattern was updated to correctly extract the volume measure from the product name string. Also, useless print statements were removed and message prompts were simplified for clarity." />
+    <MESSAGE value="Adicionado volume do produto como um atributo separado e aprimorada a extração de volume com RegEx.&#10;O volume do produto foi separado do nome do produto e inserido como um atributo distinto, tanto nas classes de entidade quanto nas classes DTO. Essa mudança atende ao mais recente pedido para tratar o volume como um atributo independente do produto. Em correlação, o padrão RegEx foi refinado para extrair de maneira eficaz a medida de volume da string do nome do produto." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adicionado volume do produto como um atributo separado e aprimorada a extração de volume com RegEx.&#10;O volume do produto foi separado do nome do produto e inserido como um atributo distinto, tanto nas classes de entidade quanto nas classes DTO. Essa mudança atende ao mais recente pedido para tratar o volume como um atributo independente do produto. Em correlação, o padrão RegEx foi refinado para extrair de maneira eficaz a medida de volume da string do nome do produto." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

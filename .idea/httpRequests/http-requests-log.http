@@ -1,3 +1,12 @@
+GET http://localhost:8080/produto/autocomplete/?searchTerm=coca
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-11-27T150720.200.json
+
+###
+
 GET http://localhost:8080/produto/produtos/
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
