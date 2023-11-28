@@ -100,7 +100,7 @@ public class Produto_MercadoDAO {
     public List<Produto_MercadoEntity> getByMercado(int limit, int offset) throws SQLException {
         List<Produto_MercadoEntity> produtos = new ArrayList<>();
 
-        String sql = "SELECT id_produto_mercado, id_mercado, nome, volume FROM produto_mercado ORDER BY volume LIMIT ? OFFSET ?";
+        String sql = "SELECT id_produto_mercado, id_mercado, nome, volume FROM produto_mercado ORDER BY nome LIMIT ? OFFSET ?";
         try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
             stmt.setInt(1, limit);
             stmt.setInt(2, offset);

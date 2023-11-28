@@ -80,7 +80,7 @@ public class ProdutoController {
 
     @PostMapping("/gpt/")
     public ResponseEntity<String> sentGPT() throws SQLException {
-        int loteSize = 50;
+        int loteSize = 35;
 
         // Obtenha o total de produtos do banco de dados
         int totalProdutos = produtoMercadoDAO.getTotalProdutos();
