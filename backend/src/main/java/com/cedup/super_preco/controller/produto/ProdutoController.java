@@ -109,15 +109,13 @@ public class ProdutoController {
     public String criarPromptListaProduto(List<Produto_MercadoEntity> produtos) {
         StringBuilder promptListaProduto = new StringBuilder();
         for (Produto_MercadoEntity produto : produtos) {
-            String nomeProduto = produto.nome.toLowerCase().replace(produto.volume.toLowerCase(), ""); // remove o volume do nome do produto
+            String nomeProduto = produto.nome.toLowerCase(); // remove o volume do nome do produto
 
             promptListaProduto.append("\\n")
                     .append("id_produto: ")
                     .append(produto.id_produto_mercado)
                     .append(", nome: ")
-                    .append(nomeProduto.trim()) // adicionado trim() para remover espaços em branco que podem ter sido deixados após a remoção do volume
-                    .append(", volume: ")
-                    .append(produto.volume);
+                    .append(nomeProduto.trim()); // adicionado trim() para remover espaços em branco que podem ter sido deixados após a remoção do volume
 
 //            System.out.println(nomeProduto.trim()); // adicionado trim() aqui também
 //            System.out.println(" Volume: " + produto.volume);

@@ -16,7 +16,8 @@ public class ChatGPT {
     private static final String endpoint = "https://api.openai.com/v1/chat/completions";
     private static final String OPENAI_MODEL = "gpt-4-1106-preview";
     String systemMessage = "Preciso que analise e agrupe TODOS produtos sem exceção." +
-            "Entre os sabores vai ter sem açúcar e zero, que são a mesma coisa ";
+            "Entre os sabores vai ter sem açúcar e zero, que são a mesma coisa." +
+            "Os volumes vão estar em ml= miligrama e l = litro  ";
     String userMessage = "Voce vai receber uma lista de produto e deve analisar todos os produtos, levando em consideração a marca, a seção, o sabor e o volume de cada um." +
             " Cada grupo deve conter obrigatoriamente apenas produtos que são exatamente iguais, têm o mesmo sabor e volume, mas estão escritos de maneiras diferentes." +
             " Gere um id_grupo e atribua o mesmo id_grupo para produtos correspondentes entre os mercados e um id_grupo único para aquele produto que não teve nenhuma correspondência." +

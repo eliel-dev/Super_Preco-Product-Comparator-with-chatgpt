@@ -34,7 +34,7 @@ public class CooperScrapper {
             // URL base do site
             String baseUrl = "https://www.minhacooper.com.br/loja/centro-timbo/produto/listar/";
             // Lista de IDs das categorias que foram tiradas da url do site
-            List<String> categoryIds = Arrays.asList("205", "40"); //, "40", "197"
+            List<String> categoryIds = Arrays.asList("205"); //, "40", "197"
 
             // Iterando sobre cada ID de categoria
             for (String categoryId : categoryIds) {
@@ -85,22 +85,11 @@ public class CooperScrapper {
                         double priceDouble = Double.parseDouble(productFinalPrice);
                         String productImageLink = "https:" + product.parent().selectFirst(".product-variation__image-container img").attr("src");
 
-                        // Extrair o volume do nome do produto
-                        ArrayList<String> productVolumes = getVolumes(productName);
-
-                        String productVolume = "";
-                        // Verifique se obtivemos algum volume
-                        if (!productVolumes.isEmpty()) {
-                            // Use o primeiro volume como o volume do produto
-                             productVolume = productVolumes.get(0);
-                        }
-
                         // cria uma nova instância de Produto_MercadoDTO
-                        Produto_MercadoEntity productInfo = new Produto_MercadoEntity(0, new MercadoEntity(1), new ProdutoEntity("0"), productName, priceDouble, productVolume, productHref, productImageLink);
+                        Produto_MercadoEntity productInfo = new Produto_MercadoEntity(0, new MercadoEntity(1), new ProdutoEntity("0"), productName, priceDouble, productHref, productImageLink);
                         // adiciona o produto à lista
                         produtos.add(productInfo);
 
-                        System.out.println("Volume do Produto: " + productVolume);
                         System.out.println("Nome do produto: " + productName);
                         System.out.println("Href do produto: " + productHref);
                         System.out.println("Preço final do produto: " + productFinalPrice);
@@ -128,21 +117,5 @@ public class CooperScrapper {
             throw new RuntimeException(e);
         }
         return produtos;
-    }
-
-    public ArrayList<String> getVolumes(String product){
-        // Criando uma lista vazia para armazenar os volumes
-        ArrayList<String> volumes = new ArrayList<>();
-
-        // Padrão de regex para encontrar a medida do volume
-        Pattern p = Pattern.compile("\\d+(,|\\.)?\\d*(ml|l|g|kg|litros)", Pattern.CASE_INSENSITIVE);
-        Matcher m = p.matcher(product);
-
-        // Se uma correspondência for encontrada, adicione-a à nossa lista de volumes
-        while(m.find()){
-            volumes.add(m.group());
-        }
-        // Retornar a lista de volumes
-        return volumes;
     }
 }

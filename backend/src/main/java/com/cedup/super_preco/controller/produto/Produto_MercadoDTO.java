@@ -9,17 +9,15 @@ public class Produto_MercadoDTO {
     public String id_produto;
     public String nome;
     public double preco;
-    public String volume;
     public String link;
     public String link_img;
 
-    public Produto_MercadoDTO(int id_produto_mercado, int id_mercado, String id_produto, String nome, double preco, String volume, String link, String link_img) {
+    public Produto_MercadoDTO(int id_produto_mercado, int id_mercado, String id_produto, String nome, double preco, String link, String link_img) {
         this.id_produto_mercado = id_produto_mercado;
         this.id_mercado = id_mercado;
         this.id_produto = id_produto;
         this.nome = nome;
         this.preco = preco;
-        this.volume = volume;
         this.link = link;
         this.link_img = link_img;
     }
@@ -34,14 +32,6 @@ public class Produto_MercadoDTO {
     public String toString() {
         return "\n id_produto: " + id_produto_mercado + " nome: " + nome;
 
-    }
-
-    public String getVolume() {
-        return volume;
-    }
-
-    public void setVolume(String volume) {
-        this.volume = volume;
     }
 
     public int getId_produto_mercado() {
