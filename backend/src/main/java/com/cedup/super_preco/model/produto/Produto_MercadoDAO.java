@@ -65,7 +65,7 @@ public class Produto_MercadoDAO {
         return produtos;
     }
 
-    public List<Produto_MercadoEntity> getUniqueProdutos() throws SQLException {
+    public List<Produto_MercadoEntity> getUniqueProdutos(int page, int size) throws SQLException {
         List<Produto_MercadoEntity> produtos = new ArrayList<>();
 
         String sql = "SELECT pm.* " +
@@ -75,20 +75,24 @@ public class Produto_MercadoDAO {
                 "FROM produto_mercado " +
                 "GROUP BY id_produto) subquery " +
                 "ON pm.id_produto = subquery.id_produto " +
-                "AND pm.id_produto_mercado = subquery.id_produto_mercado ";
+                "AND pm.id_produto_mercado = subquery.id_produto_mercado " +
+                "ORDER BY pm.id_produto LIMIT ? OFFSET ?";
 
-        try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-            while (rs.next()) {
-                int id_produto_mercado = rs.getInt("id_produto_mercado");
-                MercadoEntity id_mercado = new MercadoEntity(rs.getInt("id_mercado"));
-                ProdutoEntity id_produto = new ProdutoEntity(rs.getString("id_produto"));
-                String nome = rs.getString("nome");
-                double preco = rs.getDouble("preco");
-                String link = rs.getString("link");
-                String link_img = rs.getString("link_img");
-                produtos.add(new Produto_MercadoEntity(id_produto_mercado, id_mercado, id_produto, nome, preco, link,
-                        link_img));
+        try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
+            stmt.setInt(1, size);
+            stmt.setInt(2, page * size);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    int id_produto_mercado = rs.getInt("id_produto_mercado");
+                    MercadoEntity id_mercado = new MercadoEntity(rs.getInt("id_mercado"));
+                    ProdutoEntity id_produto = new ProdutoEntity(rs.getString("id_produto"));
+                    String nome = rs.getString("nome");
+                    double preco = rs.getDouble("preco");
+                    String link = rs.getString("link");
+                    String link_img = rs.getString("link_img");
+                    produtos.add(new Produto_MercadoEntity(id_produto_mercado, id_mercado, id_produto, nome, preco, link,
+                            link_img));
+                }
             }
         }
         return produtos;
@@ -118,6 +122,18 @@ public class Produto_MercadoDAO {
 
     public int getTotalProdutos() throws SQLException {
         String sql = "SELECT COUNT(*) FROM produto_mercado";
+        try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            } else {
+                return 0;
+            }
+        }
+    }
+
+    public int getTotalGrupos() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM produto";
         try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             if (rs.next()) {

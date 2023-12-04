@@ -1,14 +1,14 @@
 // Função para carregar produtos
-function carregarProdutos() {
-    fetch('http://localhost:8080/produto/produtos/')
+function carregarProdutos(pageNumber) {
+    fetch(`http://localhost:8080/produto/produtos/?page=${pageNumber}`)
         .then(response => response.json())
         .then(data => {
             let row = document.querySelector('#lista-de-ofertas .row');
             // lista com grupos que já foram adicionados, serve para colocar 1 produto por grupo na pagina inicial
             let gruposAdicionados = [];
             data.forEach(produto => {
-                    // criando um novo card e colocando no botão 'comparar' que eu quero passar por parâmetro
-                    row.innerHTML += `
+                // criando um novo card e colocando no botão 'comparar' que eu quero passar por parâmetro
+                row.innerHTML += `
                     <div class="col mb-3">
                         <div class="card">
                             <img src="${produto.link_img}" class="card-img-top">
@@ -28,6 +28,16 @@ function carregarProdutos() {
         })
         .catch(error => console.error('Erro:', error));
 }
+
+
+document.querySelectorAll('.page-link').forEach((link, index) => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+        carregarProdutos(index + 1);
+    });
+});
+
+
 
 document.querySelector('input[type="search"]').addEventListener('input', function(event) {
     // Obtém o termo de pesquisa do campo de entrada

@@ -66,10 +66,12 @@ public class ProdutoController {
     }
 
     @GetMapping("/produtos/")
-    public ResponseEntity<List<Produto_MercadoDTO>> getUniqueProdutos() throws SQLException {
+    public ResponseEntity<List<Produto_MercadoDTO>> getUniqueProdutos(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) throws SQLException {
 
-        return ResponseEntity.ok().body(produtoConverter.toDTO(produtoMercadoDAO.getUniqueProdutos()));
-
+        List<Produto_MercadoDTO> produtos = produtoConverter.toDTO(produtoMercadoDAO.getUniqueProdutos(page, size));
+        return ResponseEntity.ok().body(produtos);
     }
 
     @GetMapping("/grupo/{id_grupo}")
@@ -80,7 +82,7 @@ public class ProdutoController {
 
     @PostMapping("/gpt/")
     public ResponseEntity<String> sentGPT() throws SQLException {
-        int loteSize = 35;
+        int loteSize = 200;
 
         // Obtenha o total de produtos do banco de dados
         int totalProdutos = produtoMercadoDAO.getTotalProdutos();
