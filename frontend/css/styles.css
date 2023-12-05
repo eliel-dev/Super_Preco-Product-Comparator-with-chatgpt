@@ -14156,3 +14156,7 @@ section#lista-de-ofertas {
   justify-content: center;
   width: 100%;
 }
+
+.active {
+  background-color: #b60000;
+}

@@ -80,7 +80,7 @@ public class Produto_MercadoDAO {
 
         try (PreparedStatement stmt = ConnectionSingleton.getConnection().prepareStatement(sql)) {
             stmt.setInt(1, size);
-            stmt.setInt(2, page * size);
+            stmt.setInt(2, (page - 1) * size);
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     int id_produto_mercado = rs.getInt("id_produto_mercado");
