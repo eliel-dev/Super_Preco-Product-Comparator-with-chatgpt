@@ -4,6 +4,5 @@
     <file url="file://$PROJECT_DIR$/backend/banco_de_dados/super_preco_localhost-2023_11_27_18_26_03-dump.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/backend/banco_de_dados/super_preco_poc.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto/ProdutoDAO.java" dialect="GenericSQL" />
-    <file url="file://$USER_HOME$/super_preco_localhost-2023_12_03_15_48_03-dump.sql" dialect="MySQL" />
   </component>
 </project>

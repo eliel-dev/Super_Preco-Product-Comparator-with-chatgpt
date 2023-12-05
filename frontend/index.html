@@ -19,38 +19,17 @@
 <body>
     <!-- Navegação-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="index.html">
-                <img src="assets/img/logo_sem_fundo.png" alt="Start Bootstrap" style="width: 13.0rem; height: auto;">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Sobre</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">All Products</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                        </ul>
-                    </li>
-                </ul>
+        <a class="navbar-brand" href="index.html">
+            <div class="logo-container">
+                <img class="custom-logo" src="assets/img/logo_sem_fundo.png" alt="Start Bootstrap">
             </div>
-        </div>
+        </a>
     </nav>
     <!-- Lista mercados disponíveis-->
     <section id="lista-de-ofertas" class="py-5 bg-light">
         <div class="d-flex">
             <div class="form-container">
-                <input id="campo-pesquisa" class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                <input id="campo-pesquisa" class="form-control me-2" type="search" placeholder="Pesquise um produto..." aria-label="Search">
                 <ul id="lista-sugestoes"></ul>
             </div>
             <button class="btn btn-outline-success" type="submit" onclick="carregarProdutosPorPesquisa(document.getElementById('campo-pesquisa').value)">Pesquisar</button>
@@ -66,7 +45,7 @@
     <nav aria-label="...">
         <ul class="pagination">
             <li class="page-item">
-                <a class="page-link" href="#previous">Previous</a>
+                <a class="page-link" href="#previous">Anterior</a>
             </li>
             <li class="page-item"><a class="page-link" href="#1">1</a></li>
             <li class="page-item active" aria-current="page">
@@ -74,7 +53,7 @@
             </li>
             <li class="page-item"><a class="page-link" href="#3">3</a></li>
             <li class="page-item">
-                <a class="page-link" href="#next">Next</a>
+                <a class="page-link" href="#next">Próximo</a>
             </li>
         </ul>
     </nav>
