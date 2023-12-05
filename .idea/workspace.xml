@@ -6,14 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9cc13aa5-a7d2-428b-8e6c-e0ad182addd0" name="Changes" comment="Update product auto-search functionality&#10;&#10;Uncommented, updated and refactored the auto-complete functionality on product search in ProdutoController and Produto_MercadoDAO file, enabling users to type few characters in the search bar and system would suggest corresponding products. This will make it easier for users to find their desired product quickly and conveniently. Additional tweaks made on the stylesheets and JavaScript code to control the display and functionality of the auto-complete feature.">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/banco_de_dados/super_preco_localhost-2023_11_27_18_26_03-dump.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/ConnectionSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/ConnectionSingleton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ProdutoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/controller/produto/ProdutoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto/Produto_MercadoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/model/produto/Produto_MercadoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/produtos_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/js/produtos_api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +127,7 @@
       <workItem from="1701537746337" duration="7332000" />
       <workItem from="1701780585285" duration="215000" />
       <workItem from="1701781184017" duration="17397000" />
+      <workItem from="1701814303131" duration="779000" />
     </task>
     <task id="LOCAL-00001" summary="Adicionado volume do produto como um atributo separado e aprimorada a extração de volume com RegEx.&#10;O volume do produto foi separado do nome do produto e inserido como um atributo distinto, tanto nas classes de entidade quanto nas classes DTO. Essa mudança atende ao mais recente pedido para tratar o volume como um atributo independente do produto. Em correlação, o padrão RegEx foi refinado para extrair de maneira eficaz a medida de volume da string do nome do produto.">
       <option name="closed" value="true" />

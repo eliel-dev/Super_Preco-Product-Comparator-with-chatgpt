@@ -68,7 +68,7 @@ public class ProdutoController {
     @GetMapping("/produtos/")
     public ResponseEntity<List<Produto_MercadoDTO>> getUniqueProdutos(
             @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "10") int size) throws SQLException {
+            @RequestParam(defaultValue = "20") int size) throws SQLException {
 
         List<Produto_MercadoDTO> produtos = produtoConverter.toDTO(produtoMercadoDAO.getUniqueProdutos(page, size));
         return ResponseEntity.ok().body(produtos);
