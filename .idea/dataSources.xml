@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306/super_preco</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="@database-tcc.ck3iuzwtvyfk.sa-east-1.rds.amazonaws.com" uuid="0be69b37-c5d2-4983-a836-c5175f333227">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://database-tcc.ck3iuzwtvyfk.sa-east-1.rds.amazonaws.com:3306</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

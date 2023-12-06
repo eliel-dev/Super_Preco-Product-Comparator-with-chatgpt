@@ -107,13 +107,12 @@ window.onload = async () => {
 };
 
 
-
 // Evento ao clicar no botão "Anterior"
 document.querySelector('#previous').addEventListener('click', async (event) => {
     event.preventDefault();
     const currentPageNum = Number(document.querySelector('#current-page').textContent);
     const previousPageNum = currentPageNum - 1;
-    if (previousPageNum >= 2) {
+    if (previousPageNum >= 1) { // Alterado para permitir a página 1
         history.pushState(null, '', `#page${previousPageNum}`);
         updatePageLinks(previousPageNum);
         await carregarProdutos(previousPageNum);
@@ -134,7 +133,7 @@ document.querySelector('#next').addEventListener('click', async (event) => {
 
     // Primeiro, checamos se há produtos na próxima página
     const nextProducts = await carregarProdutos(nextPageNum);
-    if (nextProducts.length === 10) { // Se temos 10 produtos, não é a última pagina
+    if (nextProducts.length > 0) { // Alterado para verificar se a lista de produtos está vazia
         // Atualize para a próxima página
         history.pushState(null, '', `#page${nextPageNum}`);
         updatePageLinks(nextPageNum);
@@ -142,7 +141,7 @@ document.querySelector('#next').addEventListener('click', async (event) => {
         document.querySelector('#previous').style.display = 'block';
         document.querySelector('#next-page').style.display = 'block'; // Mostra o número da próxima página
     } else {
-        // Se não houver 10 produtos, estamos na última página
+        // Se não houver produtos, estamos na última página
         document.querySelector('#next').style.display = 'none';
         document.querySelector('#next-page').style.display = 'none'; // Esconde o número da próxima página
     }

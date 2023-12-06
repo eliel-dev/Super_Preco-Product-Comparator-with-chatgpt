@@ -19,9 +19,9 @@ public class ConnectionSingleton {
 
         if (connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection( //
-                    "jdbc:mysql://:3306/super_preco", //
-                    "root", //
-                    "");
+                    "jdbc:mysql://database-tcc.ck3iuzwtvyfk.sa-east-1.rds.amazonaws.com:3306/super_preco", //
+                    "admin", //
+                    "f9Y4J8XIIEeI");
         }
         return connection;
     }
