@@ -4,88 +4,55 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cc13aa5-a7d2-428b-8e6c-e0ad182addd0" name="Changes" comment="Adiciona funcionalidade de paginação e busca à lista de produtos&#10;&#10;Este commit atualiza as classes ProductService, Product_MarketDAO e ProdutoController em backend para corrigir um erro de deslocamento por um com o parâmetro de página. Anteriormente, um valor padrão de 0, que poderia lançar SQLExceptions devido a números de páginas fora do limite, era definido. Agora, o valor padrão da página é definido como 1, o que se alinha com a contagem humana intuitiva e garante que a solicitação da página não lance exceções fora do limite.&#10;&#10;Esta atualização também aprimora o sistema de navegação da interface do usuário para suportar a paginação dinâmica. Agora, um usuário pode navegar para frente e para trás nas páginas de produtos, já que a funcionalidade de navegação da página agora reflete com precisão a página que o usuário está visualizando.&#10;&#10;O commit também adiciona funcionalidade de busca ao recurso de listagem de produtos. Os usuários agora podem pesquisar produtos diretamente da página de listagem, e as correspondências são destacadas para facilitar a visualização.&#10;&#10;A refatoração de js/produtos_api.js é realizada para melhorar a legibilidade e a manutenção do código.&#10;&#10;No geral, essas mudanças aprimoram a experiência de navegação para os usuários finais e tornam a navegação na página de listagem de produtos mais intuitiva. Essas mudanças não impactam nenhuma outra área do aplicativo.">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="be9841c2-f349-4880-8656-c2a583e3db77" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.fleet/run.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/liwol.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2023-11-19T131257.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2023-11-19T131352.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/ConnectionSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cedup/super_preco/ConnectionSingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/produtos_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/js/produtos_api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/frontend/css/styles.css" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="LogFilters">
-    <option name="FILTER_ERRORS" value="false" />
-    <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
-    <option name="CUSTOM_FILTER" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 6
 }</component>
-  <component name="ProjectId" id="2YSSMBBHBemqeJmDqAe0ttLb1Sr" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2ZHVmdoYVw6K1z9iB6jl6XUKou9" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
-    <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.web.browsers&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
-    ]
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.SuperPrecoApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Spring Boot.SuperPrecoApplication">
-    <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="Run single request">
-      <method v="2" />
-    </configuration>
+}]]></component>
+  <component name="RunManager">
     <configuration name="SuperPrecoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="super_preco" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cedup.super_preco.SuperPrecoApplication" />
@@ -93,84 +60,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="HTTP Request.generated-requests | #3" />
-      </list>
-    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-18.0.2-corretto-18.0.2-3183f394aec4-38982a12" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9cc13aa5-a7d2-428b-8e6c-e0ad182addd0" name="Changes" comment="" />
-      <created>1700517439724</created>
+      <changelist id="be9841c2-f349-4880-8656-c2a583e3db77" name="Changes" comment="" />
+      <created>1702079157725</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1700517439724</updated>
-      <workItem from="1700517442383" duration="1437000" />
-      <workItem from="1700522153533" duration="700000" />
-      <workItem from="1700605650755" duration="3048000" />
-      <workItem from="1700612787004" duration="203000" />
-      <workItem from="1700613125165" duration="55000" />
-      <workItem from="1700761607901" duration="83000" />
-      <workItem from="1700761707082" duration="317000" />
-      <workItem from="1700762033040" duration="3462000" />
-      <workItem from="1700769858135" duration="1654000" />
-      <workItem from="1700771542085" duration="17581000" />
-      <workItem from="1701012373280" duration="1926000" />
-      <workItem from="1701014307184" duration="5026000" />
-      <workItem from="1701092229314" duration="435000" />
-      <workItem from="1701097197514" duration="14679000" />
-      <workItem from="1701119690155" duration="1000" />
-      <workItem from="1701122275096" duration="7429000" />
-      <workItem from="1701209978115" duration="56000" />
-      <workItem from="1701210053489" duration="5162000" />
-      <workItem from="1701535087258" duration="2632000" />
-      <workItem from="1701537746337" duration="7332000" />
-      <workItem from="1701780585285" duration="215000" />
-      <workItem from="1701781184017" duration="17397000" />
-      <workItem from="1701814303131" duration="779000" />
-      <workItem from="1701852575279" duration="1614000" />
+      <updated>1702079157725</updated>
+      <workItem from="1702079163370" duration="140000" />
+      <workItem from="1702079458016" duration="348000" />
     </task>
-    <task id="LOCAL-00001" summary="Adicionado volume do produto como um atributo separado e aprimorada a extração de volume com RegEx.&#10;O volume do produto foi separado do nome do produto e inserido como um atributo distinto, tanto nas classes de entidade quanto nas classes DTO. Essa mudança atende ao mais recente pedido para tratar o volume como um atributo independente do produto. Em correlação, o padrão RegEx foi refinado para extrair de maneira eficaz a medida de volume da string do nome do produto.">
-      <option name="closed" value="true" />
-      <created>1701106774274</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1701106774274</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Habilitação da busca automática de produtos&#10;&#10;A funcionalidade de autocompletar foi implementada na busca de produtos. O código que estava comentado nos arquivos ProdutoController e Produto_MercadoDAO foi descomentado, atualizado e refatorado, permitindo que os usuários digitem alguns caracteres na barra de busca, e o sistema sugira produtos correspondentes. Essa funcionalidade facilita para que os usuários encontrem o produto desejado de forma mais rápida e conveniente. Além disso, foram realizados ajustes na folha de estilo e no código JavaScript para controlar a exibição e a funcionalidade do recurso de autocompletar.">
-      <option name="closed" value="true" />
-      <created>1701114053595</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1701114053595</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Update product auto-search functionality&#10;&#10;Uncommented, updated and refactored the auto-complete functionality on product search in ProdutoController and Produto_MercadoDAO file, enabling users to type few characters in the search bar and system would suggest corresponding products. This will make it easier for users to find their desired product quickly and conveniently. Additional tweaks made on the stylesheets and JavaScript code to control the display and functionality of the auto-complete feature.">
-      <option name="closed" value="true" />
-      <created>1701131078321</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1701131078321</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add volume attribute to products and improve RegEx pattern for volume extraction&#10;&#10;Product volume was got separated from the product name and added as a separate attribute both in entity and DTO classes. This is in alignment with the new requirement to treat volume as a separate attribute of a product. To achieve this, Regex pattern was updated to correctly extract the volume measure from the product name string. Also, useless print statements were removed and message prompts were simplified for clarity." />
-    <MESSAGE value="Adicionado volume do produto como um atributo separado e aprimorada a extração de volume com RegEx.&#10;O volume do produto foi separado do nome do produto e inserido como um atributo distinto, tanto nas classes de entidade quanto nas classes DTO. Essa mudança atende ao mais recente pedido para tratar o volume como um atributo independente do produto. Em correlação, o padrão RegEx foi refinado para extrair de maneira eficaz a medida de volume da string do nome do produto." />
-    <MESSAGE value="Habilitação da busca automática de produtos&#10;&#10;A funcionalidade de autocompletar foi implementada na busca de produtos. O código que estava comentado nos arquivos ProdutoController e Produto_MercadoDAO foi descomentado, atualizado e refatorado, permitindo que os usuários digitem alguns caracteres na barra de busca, e o sistema sugira produtos correspondentes. Essa funcionalidade facilita para que os usuários encontrem o produto desejado de forma mais rápida e conveniente. Além disso, foram realizados ajustes na folha de estilo e no código JavaScript para controlar a exibição e a funcionalidade do recurso de autocompletar." />
-    <MESSAGE value="Update product auto-search functionality&#10;&#10;Uncommented, updated and refactored the auto-complete functionality on product search in ProdutoController and Produto_MercadoDAO file, enabling users to type few characters in the search bar and system would suggest corresponding products. This will make it easier for users to find their desired product quickly and conveniently. Additional tweaks made on the stylesheets and JavaScript code to control the display and functionality of the auto-complete feature." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update product auto-search functionality&#10;&#10;Uncommented, updated and refactored the auto-complete functionality on product search in ProdutoController and Produto_MercadoDAO file, enabling users to type few characters in the search bar and system would suggest corresponding products. This will make it easier for users to find their desired product quickly and conveniently. Additional tweaks made on the stylesheets and JavaScript code to control the display and functionality of the auto-complete feature." />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
