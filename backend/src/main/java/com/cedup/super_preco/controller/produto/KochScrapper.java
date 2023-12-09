@@ -28,6 +28,7 @@ public class KochScrapper {
             String baseUrl = "https://www.superkoch.com.br";
             // Lista de URLs usando o método 'asList'
             List<String> categoryPaths = Arrays.asList(
+                    "/bebidas/energetico/energetico",
                     "/bebidas/refrigerante"
             );
 

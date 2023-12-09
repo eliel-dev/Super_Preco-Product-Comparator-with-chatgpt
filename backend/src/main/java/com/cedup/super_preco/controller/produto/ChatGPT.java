@@ -16,8 +16,14 @@ public class ChatGPT {
     private static final String endpoint = "https://api.openai.com/v1/chat/completions";
     private static final String OPENAI_MODEL = "gpt-4-1106-preview";
     String systemMessage = "Preciso que analise e agrupe TODOS produtos sem exceção." +
-            "Entre os sabores vai ter sem açúcar e zero, que são a mesma coisa." +
-            "Os volumes vão estar em ml= miligrama e l = litro  ";
+            "Entre os sabores vai ter sem açúcar e zero, que são a mesma coisa. O formato da embalagem pet e garrafa também são a mesma coisa" +
+            "Os volumes vão estar em ml= miligrama e l = litro " +
+            "como por exemplo esses produtos que estão escritos de formas diferentes mas são o mesmo produto:" +
+            "Refrigerante Guaraná Antarctica Pet 600ml e Refrigerante Guaraná Antarctica Garrafa 600ml" +
+            "Energético Monster Ultra Violet Lata 473ml e Energético Ultra Violet Zero Açúcar Monster 473ml" +
+            "Energético Baly Sabor Melancia 2l e Energético Melancia Baly Garrafa 2L" +
+            "Refrigerante Coca Cola Zero Pet 1,5l e Refrigerante sem Açúcar Coca-Cola Garrafa 1,5L";
+    
     String userMessage = "Voce vai receber uma lista de produto e deve analisar todos os produtos, levando em consideração a marca, a seção, o sabor e o volume de cada um." +
             " Cada grupo deve conter obrigatoriamente apenas produtos que são exatamente iguais, têm o mesmo sabor e volume, mas estão escritos de maneiras diferentes." +
             " Gere um id_grupo e atribua o mesmo id_grupo para produtos correspondentes entre os mercados e um id_grupo único para aquele produto que não teve nenhuma correspondência." +

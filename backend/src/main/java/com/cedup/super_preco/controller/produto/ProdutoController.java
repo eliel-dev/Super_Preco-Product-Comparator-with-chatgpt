@@ -82,7 +82,7 @@ public class ProdutoController {
 
     @PostMapping("/gpt/")
     public ResponseEntity<String> sentGPT() throws SQLException {
-        int loteSize = 200;
+        int loteSize = 40;
 
         // Obtenha o total de produtos do banco de dados
         int totalProdutos = produtoMercadoDAO.getTotalProdutos();
@@ -97,9 +97,6 @@ public class ProdutoController {
 
             // Envia o prompt para a API da OpenAI e recebe a resposta
             response = chatGPT.getOpenAIResponse(promptListaProduto);
-
-            // Desativa envio para API GPT
-            //response = "{\"choices\": []}";
 
             // Processa a resposta da API
             criaGruposProdutosDaAPI(response);

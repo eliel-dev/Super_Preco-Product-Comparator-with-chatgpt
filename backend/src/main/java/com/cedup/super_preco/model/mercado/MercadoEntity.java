@@ -26,4 +26,7 @@ public class MercadoEntity {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+
+
 }
