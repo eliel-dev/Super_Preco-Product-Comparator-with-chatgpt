@@ -113,8 +113,6 @@ public class Produto_MercadoDAO {
                 produtos.add(new Produto_MercadoEntity(id_produto_mercado, id_mercado, nome));
                 // System.out.println(nome);
             }
-            System.out.println("limit: " + limit);
-            System.out.println("offset: " + offset);
             System.out.println("_____________________________________________________________________");
         }
         return produtos;

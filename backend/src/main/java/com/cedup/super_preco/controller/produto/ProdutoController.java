@@ -49,9 +49,10 @@ public class ProdutoController {
         for (Produto_MercadoEntity produtoEntity : allProdutos) {
             produtoMercadoDAO.addProduto(produtoEntity);
         }
+        System.out.println();
+        System.out.println("Scraping de produtos finalizado.");
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-
 
     @GetMapping
     public ResponseEntity<List<Produto_MercadoDTO>> getProdutos() throws SQLException {
@@ -88,7 +89,11 @@ public class ProdutoController {
         int totalProdutos = produtoMercadoDAO.getTotalProdutos();
         String response = null;
 
+        int y = 0;
         for (int i = 0; i < totalProdutos; i += loteSize) {
+            y ++;
+            System.out.println();
+            System.out.println("Enviando o " + y + "º lote de produtos.");
             // Obtenha o lote de produtos do banco de dados usando LIMIT e OFFSET
             List<Produto_MercadoEntity> loteProdutos = produtoMercadoDAO.getByMercado(loteSize, i);
 
@@ -102,6 +107,7 @@ public class ProdutoController {
             criaGruposProdutosDaAPI(response);
         }
 
+        System.out.println("Relacionamentos de produtos finalizado.");
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
@@ -115,12 +121,6 @@ public class ProdutoController {
                     .append(produto.id_produto_mercado)
                     .append(", nome: ")
                     .append(nomeProduto.trim()); // adicionado trim() para remover espaços em branco que podem ter sido deixados após a remoção do volume
-
-//            System.out.println(nomeProduto.trim()); // adicionado trim() aqui também
-//            System.out.println(" Volume: " + produto.volume);
-              System.out.println("ID produto: " + produto.id_produto_mercado);
-
-
         }
         return promptListaProduto.toString();
     }
@@ -141,7 +141,6 @@ public class ProdutoController {
                 ProdutoEntity entity = produtoConverter.toEntity(novoProduto);
                 ProdutoDAO produtoDAO = new ProdutoDAO();
                 produtoDAO.addGrupo(entity);
-                System.out.println("novoProduto" + novoProduto);
                 atualizaIdProdutoDoGrupo(grupo, novoProduto);
             }
         } catch (Exception e) {
@@ -168,7 +167,6 @@ public class ProdutoController {
         JsonNode idsProdutoMercado = grupo.get("id_produto");
         if (idsProdutoMercado != null && idsProdutoMercado.isArray()) {
             for (JsonNode idProduto_nercado : idsProdutoMercado) {
-                System.out.println("ID do Produto_Mercado: " + idProduto_nercado.asInt());
                 produtoMercadoDAO.updateIdProduto(idProduto_nercado.asInt(), novoProduto.getId());
             }
         }

@@ -91,7 +91,7 @@ public class KochScrapper {
                         produtos.add(productInfo);
 
                         System.out.println("Nome do produto: " + productName);
-                        System.out.println("Href do produto: " + productHref);
+                        System.out.println("Link do produto: " + productHref);
                         System.out.println("Preço final do produto: " + productPrice);
                         System.out.println("Link da imagem do produto: " + productImageLink);
                         System.out.println("---------------------------------------------------------------------------------------------------------------------");
@@ -106,10 +106,10 @@ public class KochScrapper {
                     // Incrementando o número da página para a próxima iteração
                     pageNumber++;
                 }
-                System.out.println("Número de produtos raspados para a categoria " + categoryPath + ": " + productCount);
+//                System.out.println("Número de produtos raspados para a categoria " + categoryPath + ": " + productCount);
             }
             // Imprimindo o número total de produtos raspados
-            System.out.println("Total de produtos raspados: " + totalProductCount);
+//            System.out.println("Total de produtos raspados: " + totalProductCount);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
