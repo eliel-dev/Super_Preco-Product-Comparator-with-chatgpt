@@ -19,6 +19,7 @@ As credenciais do banco de dados (URL, nome de usuário, senha) devem ser fornec
 - **API do ChatGPT**:
 Você precisará de uma chave de API válida da OpenAI para usar a funcionalidade de ChatGPT.
 Forneça a chave de API no arquivo "application.properties".
+A versão do GPT pode ser alterada na classe "ChatGPT"
 
 ## Autores
 
