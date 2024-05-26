@@ -11,15 +11,15 @@ Super Preço foi desenvolvido para facilitar a comparação de preços de produt
 - Maven 3.5.3+
 - MySQL Server: 8.4.0+
 
-## Configurações adcionais
+## Configurações adicionais
 
 - **Banco de Dados**:
-Configure o acesso a um banco de dados MySQL.
-As credenciais do banco de dados (URL, nome de usuário, senha) devem ser fornecidas no arquivo "ConnectionSingleton.java".
+  Configure o acesso a um banco de dados MySQL.
+  As credenciais do banco de dados (URL, nome de usuário, senha) devem ser fornecidas no arquivo "ConnectionSingleton.java".
 - **API do ChatGPT**:
-Você precisará de uma chave de API válida da OpenAI para usar a funcionalidade de ChatGPT.
-Forneça a chave de API no arquivo "application.properties".
-A versão do GPT pode ser alterada na classe "ChatGPT"
+  Você precisará de uma chave de API válida da OpenAI para usar a funcionalidade do ChatGPT.
+  Forneça a chave de API no arquivo "application.properties".
+  A versão do GPT pode ser alterada na classe "ChatGPT".
 
 ## Autores
 
@@ -28,7 +28,6 @@ A versão do GPT pode ser alterada na classe "ChatGPT"
 
 ## Agradecimentos
 Agradecimentos especiais ao orientador [@Roberto Luiz Debarba](https://github.com/RobertoDebarba) e ao [@Centro de Educação Profissional de Timbó (CEDUP)](https://github.com/GitCedup) por todo o suporte e orientação.
-
 
 ## Licença
 
