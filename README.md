@@ -3,7 +3,7 @@
 Super Preço foi desenvolvido para facilitar a comparação de preços de produtos de mercados online. Utilizando técnicas de web scraping e a API GPT da OpenAI, o software salva em um banco de dados produtos de mercados online e depois usa esses dados para criar uma relação de produtos iguais, mesmo quando possuem descrições diferentes.
 
 # Fluxo de Processamento dos Dados
-![](image.png)
+![Captura de tela 2024-05-26 024212](https://github.com/eliel-dev/Super_Preco-Product-Comparator-with-chatgpt/assets/126355234/894f18d2-fccc-4823-aa8e-6c0f63f19ccd)
 
 ## Requisitos
 
