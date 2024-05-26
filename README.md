@@ -1,55 +1,34 @@
-<h1 align="center"> Super Preço - Compare e escolha </h1>
+# SUPER PREÇO - COMPARADOR DE PREÇOS DE MERCADOS ONLINE
 
-<p align="center">
-<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
-</p>
+Super Preço foi desenvolvido para facilitar a comparação de preços de produtos de mercados online. Utilizando técnicas de web scraping e a API GPT da OpenAI, o software salva em um banco de dados produtos de mercados online e depois usa esses dados para criar uma relação de produtos iguais, mesmo quando possuem descrições diferentes.
 
+# Fluxo de Processamento dos Dados
+![](image.png)
 
-# Índice
+## Requisitos
 
-* [Título e Imagem de capa](#Título-e-Imagem-de-capa)
-* [Badges](#badges)
-* [Índice](#índice)
-* [Descrição do Projeto](#descrição-do-projeto)
-* [Status do Projeto](#status-do-Projeto)
-* [Funcionalidades e Demonstração da Aplicação](#funcionalidades-e-demonstração-da-aplicação)
-* [Acesso ao Projeto](#acesso-ao-projeto)
-* [Tecnologias utilizadas](#tecnologias-utilizadas)
-* [Pessoas Contribuidoras](#pessoas-contribuidoras)
-* [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras)
+- Java Development Kit (JDK) 17+
+- Maven 3.5.3+
+- MySQL Server: 8.4.0+
 
-# :hammer: Funcionalidades do projeto
+## Configurações adcionais
 
-* `Funcionalidade 1`: descrição da funcionalidade 1
-* `Funcionalidade 2`: descrição da funcionalidade 2
-* `Funcionalidade 2a`: descrição da funcionalidade 2a relacionada à funcionalidade 2
-* `Funcionalidade 3`: descrição da funcionalidade 3
+- **Banco de Dados**:
+Configure o acesso a um banco de dados MySQL.
+As credenciais do banco de dados (URL, nome de usuário, senha) devem ser fornecidas no arquivo "ConnectionSingleton.java".
+- **API do ChatGPT**:
+Você precisará de uma chave de API válida da OpenAI para usar a funcionalidade de ChatGPT.
+Forneça a chave de API no arquivo "application.properties".
 
-# 📁 Acesso ao projeto
+## Autores
 
-**Indique como é possível baixar ou acessar o código fonte do projeto, seja projeto inicial ou final**
+- [@Eliel Rodrigues](https://github.com/eliel-dev)
+- [@Fernanda Paterno](https://github.com/Fernandafp)
 
-# 🛠️ Abrir e rodar o projeto
-
-**Apresente as instruções necessárias para abrir e executar o projeto**
+## Agradecimentos
+Agradecimentos especiais ao orientador [@Roberto Luiz Debarba](https://github.com/RobertoDebarba) e ao [@Centro de Educação Profissional de Timbó (CEDUP)](https://github.com/GitCedup) por todo o suporte e orientação.
 
 
+## Licença
 
-* `Funcionalidade 1`: descrição da funcionalidade 1
-* `Funcionalidade 2`: descrição da funcionalidade 2
-* `Funcionalidade 2a`: descrição da funcionalidade 2a relacionada à funcionalidade 2
-* `Funcionalidade 3`: descrição da funcionalidade 3
-* `Funcionalidade 1`: descrição da funcionalidade 1
-* `Funcionalidade 2`: descrição da funcionalidade 2
-* `Funcionalidade 2a`: descrição da funcionalidade 2a relacionada à funcionalidade 2
-* `Funcionalidade 3`: descrição da funcionalidade 3
-* `Funcionalidade 1`: descrição da funcionalidade 1
-* `Funcionalidade 2`: descrição da funcionalidade 2
-* `Funcionalidade 2a`: descrição da funcionalidade 2a relacionada à funcionalidade 2
-* `Funcionalidade 3`: descrição da funcionalidade 3
-* `Funcionalidade 1`: descrição da funcionalidade 1
-* `Funcionalidade 2`: descrição da funcionalidade 2
-* `Funcionalidade 2a`: descrição da funcionalidade 2a relacionada à funcionalidade 2
-
-
-# pessoas contribuidoras
+The codebase is licensed under [GPL v3.0](http://www.gnu.org/licenses/gpl-3.0.html).
